@@ -25,7 +25,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--gray-100);
+            background: #f8f9fa;
             color: var(--dark);
             line-height: 1.6;
         }
@@ -34,7 +34,7 @@
         .hero {
             background: linear-gradient(135deg, #0062E0 0%, #19AFFF 100%);
             color: white;
-            padding: 80px 40px 60px;
+            padding: 48px 40px 36px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -46,24 +46,23 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
         }
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             position: relative;
         }
         .hero .subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto 24px;
+            max-width: 700px;
+            margin: 0 auto 16px;
             position: relative;
         }
         .hero .badge {
@@ -81,26 +80,27 @@
         /* Tab Navigation */
         .tab-bar {
             background: white;
-            padding: 16px 40px 0;
+            padding: 0 24px;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
             display: flex;
-            gap: 4px;
+            gap: 0;
             flex-wrap: wrap;
             justify-content: center;
+            border-bottom: 1px solid var(--gray-200);
         }
         .tab-btn {
             text-decoration: none;
             color: var(--gray-800);
-            padding: 12px 20px;
-            border-radius: 12px 12px 0 0;
-            font-size: 0.85rem;
+            padding: 14px 18px;
+            border-radius: 0;
+            font-size: 0.82rem;
             font-weight: 600;
-            transition: all 0.25s ease;
-            border: 1px solid transparent;
-            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            border: none;
+            border-bottom: 2px solid transparent;
             cursor: pointer;
             background: transparent;
             user-select: none;
@@ -111,11 +111,10 @@
             color: var(--primary);
         }
         .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            border-bottom-color: var(--primary-dark);
-            box-shadow: 0 2px 8px rgba(24,119,242,0.3);
+            background: transparent;
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            box-shadow: none;
         }
         .tab-btn .tab-icon {
             margin-right: 6px;
@@ -136,36 +135,36 @@
 
         /* Main Content */
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 32px 24px;
         }
 
         /* Industry Section */
         .industry-section {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
         .industry-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 3px solid var(--primary);
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
         }
         .industry-icon {
-            width: 56px;
-            height: 56px;
+            width: 44px;
+            height: 44px;
             background: linear-gradient(135deg, var(--primary), #19AFFF);
-            border-radius: 14px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: white;
         }
         .industry-header h2 {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--gray-900);
         }
@@ -173,30 +172,33 @@
         /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 900px) {
+            .cards-grid { grid-template-columns: 1fr; }
         }
         .card {
             background: white;
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: var(--card-shadow);
-            transition: all 0.3s ease;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
             border: 1px solid var(--gray-200);
         }
         .card:hover {
-            box-shadow: var(--card-hover);
-            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-1px);
         }
         .card-label {
             display: inline-block;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 12px;
-            border-radius: 6px;
-            margin-bottom: 12px;
+            letter-spacing: 0.8px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
         }
         .label-needs { background: #e3f2fd; color: #1565c0; }
         .label-gtm { background: #e8f5e9; color: #2e7d32; }
@@ -205,9 +207,9 @@
         .label-case { background: #fce4ec; color: #c62828; }
 
         .card h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: var(--gray-900);
         }
         .card ul {
@@ -215,10 +217,10 @@
             padding: 0;
         }
         .card ul li {
-            padding: 6px 0;
-            padding-left: 20px;
+            padding: 5px 0;
+            padding-left: 18px;
             position: relative;
-            font-size: 0.92rem;
+            font-size: 0.85rem;
             color: var(--gray-800);
             line-height: 1.5;
         }
@@ -230,33 +232,33 @@
             font-weight: 700;
         }
         .card p {
-            font-size: 0.92rem;
+            font-size: 0.85rem;
             color: var(--gray-800);
             line-height: 1.6;
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
-            border-left: 4px solid var(--primary);
-            padding: 16px 20px;
-            border-radius: 0 10px 10px 0;
-            margin-top: 12px;
-            font-size: 0.88rem;
+            background: #f8fafc;
+            border-left: 3px solid var(--primary);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 10px;
+            font-size: 0.82rem;
         }
 
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 10px;
-            margin-top: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
         }
         .kpi-item {
             background: var(--gray-100);
-            padding: 10px 14px;
-            border-radius: 8px;
+            padding: 8px 10px;
+            border-radius: 6px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.82rem;
+            font-size: 0.75rem;
             color: var(--primary-dark);
             border: 1px solid var(--gray-200);
             position: relative;
@@ -283,22 +285,22 @@
         }
 
         .case-study {
-            background: linear-gradient(135deg, #fafafa, #f5f5f5);
+            background: #fafafa;
             border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 12px;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 10px;
         }
 
         /* Meta Ads Manager Mockup */
         .ads-manager-mockup {
             background: #ffffff;
-            border: 1px solid #dddfe2;
-            border-radius: 10px;
+            border: 1px solid #e4e6eb;
+            border-radius: 8px;
             overflow: hidden;
-            margin-top: 16px;
+            margin-top: 12px;
             font-size: 0.78rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            box-shadow: none;
         }
         .ads-manager-mockup .am-header {
             background: #f0f2f5;
@@ -453,7 +455,7 @@
         }
         .flow-tab-panel {
             display: none;
-            padding: 16px;
+            padding: 14px;
         }
         .flow-tab-panel.flow-panel-active {
             display: block;
@@ -462,25 +464,25 @@
         /* Meta Ads Manager - Campaign Creation Flow */
         .ads-manager-flow {
             background: #ffffff;
-            border: 1px solid #dddfe2;
-            border-radius: 10px;
+            border: 1px solid #e4e6eb;
+            border-radius: 8px;
             overflow: hidden;
-            margin-top: 16px;
+            margin-top: 12px;
             font-size: 0.78rem;
         }
         .ads-manager-flow .flow-header {
             background: #1877F2;
             color: white;
-            padding: 10px 16px;
+            padding: 8px 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-weight: 700;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
         }
         .ads-manager-flow .flow-header .meta-logo {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             background: white;
             border-radius: 50%;
             display: flex;
@@ -488,17 +490,20 @@
             justify-content: center;
             color: #1877F2;
             font-weight: 900;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
         .flow-source {
-            background: #e8f0fe;
-            padding: 4px 16px;
-            font-size: 0.68rem;
-            color: #4a6fa5;
-            border-bottom: 1px solid #d4e3f8;
+            background: #f8fafc;
+            padding: 3px 14px;
+            font-size: 0.65rem;
+            color: #6b7c93;
+            border-bottom: 1px solid #e4e6eb;
         }
         .flow-source a {
             color: #1a5dab;
+            text-decoration: none;
+        }
+        .flow-source a:hover {
             text-decoration: underline;
         }
         .flow-breadcrumb {
@@ -722,9 +727,9 @@
         .footer {
             background: var(--gray-900);
             color: rgba(255,255,255,0.7);
-            padding: 40px;
+            padding: 28px 40px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
         .footer strong { color: white; }
 
@@ -739,23 +744,26 @@
         /* Section Intro */
         .section-intro {
             background: white;
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 40px;
-            box-shadow: var(--card-shadow);
-            border-left: 5px solid var(--primary);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--primary);
         }
         .section-intro h2 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
         }
         .section-intro p {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: var(--gray-700);
         }
 
         .full-width-card {
             grid-column: 1 / -1;
+        }
+        .industry-section > .card.full-width-card {
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -837,8 +845,10 @@
             </div>
         </div>
 
+    </div><!-- /cards-grid row 1 -->
+
         <!-- Key Products -->
-        <div class="card">
+        <div class="card full-width-card">
             <span class="card-label label-product">Key Product Capabilities</span>
             <h3>Meta Products for Auto<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
             <ul>
@@ -1027,7 +1037,8 @@
         </div>
 
         <!-- Best Practices -->
-        <div class="card">
+    <div class="cards-grid">
+        <div class="card full-width-card">
             <span class="card-label label-practice">Best Practices</span>
             <h3>Web Traffic Optimization for Auto</h3>
             <ul>
@@ -1140,7 +1151,9 @@
             </div>
         </div>
 
-        <div class="card">
+    </div><!-- /cards-grid row 1 -->
+
+        <div class="card full-width-card">
             <span class="card-label label-product">Key Product Capabilities</span>
             <h3>Meta Products for Travel<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
             <ul>
@@ -1303,7 +1316,8 @@
             </div>
         </div>
 
-        <div class="card">
+    <div class="cards-grid">
+        <div class="card full-width-card">
             <span class="card-label label-practice">Best Practices</span>
             <h3>Web Traffic Optimization for Travel</h3>
             <ul>
@@ -1415,7 +1429,9 @@
             </div>
         </div>
 
-        <div class="card">
+    </div><!-- /cards-grid row 1 -->
+
+        <div class="card full-width-card">
             <span class="card-label label-product">Key Product Capabilities</span>
             <h3>Meta Products for E-commerce<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
             <ul>
@@ -1571,7 +1587,8 @@
             </div>
         </div>
 
-        <div class="card">
+    <div class="cards-grid">
+        <div class="card full-width-card">
             <span class="card-label label-practice">Best Practices</span>
             <h3>Web Traffic Optimization for E-commerce</h3>
             <ul>
@@ -1687,7 +1704,9 @@
             </div>
         </div>
 
-        <div class="card">
+    </div><!-- /cards-grid row 1 -->
+
+        <div class="card full-width-card">
             <span class="card-label label-product">Key Product Capabilities</span>
             <h3>Meta Products for Retail<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
             <ul>
@@ -1820,7 +1839,8 @@
                 </div>
             </div>
 
-        <div class="card">
+    <div class="cards-grid">
+        <div class="card full-width-card">
             <span class="card-label label-practice">Best Practices</span>
             <h3>Web Traffic Optimization for Retail</h3>
             <ul>
@@ -1932,7 +1952,9 @@
             </div>
         </div>
 
-        <div class="card">
+    </div><!-- /cards-grid row 1 -->
+
+        <div class="card full-width-card">
             <span class="card-label label-product">Key Product Capabilities</span>
             <h3>Meta Products for CPG<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
             <ul>
@@ -2062,7 +2084,8 @@
                 </div>
             </div>
 
-        <div class="card">
+    <div class="cards-grid">
+        <div class="card full-width-card">
             <span class="card-label label-practice">Best Practices</span>
             <h3>Web Traffic Optimization for CPG</h3>
             <ul>
@@ -2175,7 +2198,9 @@
             </div>
         </div>
 
-        <div class="card">
+    </div><!-- /cards-grid row 1 -->
+
+        <div class="card full-width-card">
             <span class="card-label label-product">Key Product Capabilities</span>
             <h3>Meta Products for Entertainment<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
             <ul>
@@ -2311,7 +2336,8 @@
                 </div>
             </div>
 
-        <div class="card">
+    <div class="cards-grid">
+        <div class="card full-width-card">
             <span class="card-label label-practice">Best Practices</span>
             <h3>Web Traffic Optimization for Entertainment</h3>
             <ul>
@@ -2424,7 +2450,9 @@
             </div>
         </div>
 
-        <div class="card">
+    </div><!-- /cards-grid row 1 -->
+
+        <div class="card full-width-card">
             <span class="card-label label-product">Key Product Capabilities</span>
             <h3>Meta Products for Professional Services<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
             <ul>
@@ -2558,7 +2586,8 @@
                 </div>
             </div>
 
-        <div class="card">
+    <div class="cards-grid">
+        <div class="card full-width-card">
             <span class="card-label label-practice">Best Practices</span>
             <h3>Web Traffic Optimization for Professional Services</h3>
             <ul>
