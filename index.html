@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Vertical Playbook Research | Competitive Intelligence for Web Traffic</title>
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-dark: #0d5cbf;
+            --secondary: #42b72a;
+            --accent: #f7931e;
+            --dark: #1c1e21;
+            --gray-900: #1c1e21;
+            --gray-800: #2d2f33;
+            --gray-700: #3a3b3f;
+            --gray-100: #f0f2f5;
+            --gray-200: #e4e6eb;
+            --white: #ffffff;
+            --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --card-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-100);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0062E0 0%, #19AFFF 100%);
+            color: white;
+            padding: 80px 40px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 20px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        /* Tab Navigation */
+        .tab-bar {
+            background: white;
+            padding: 16px 40px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab-btn {
+            text-decoration: none;
+            color: var(--gray-800);
+            padding: 12px 20px;
+            border-radius: 12px 12px 0 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            background: transparent;
+            user-select: none;
+            position: relative;
+        }
+        .tab-btn:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            border-bottom-color: var(--primary-dark);
+            box-shadow: 0 2px 8px rgba(24,119,242,0.3);
+        }
+        .tab-btn .tab-icon {
+            margin-right: 6px;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Industry Section */
+        .industry-section {
+            margin-bottom: 60px;
+        }
+        .industry-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--primary);
+        }
+        .industry-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), #19AFFF);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        .industry-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gray-900);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+        .card:hover {
+            box-shadow: var(--card-hover);
+            transform: translateY(-2px);
+        }
+        .card-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        .label-needs { background: #e3f2fd; color: #1565c0; }
+        .label-gtm { background: #e8f5e9; color: #2e7d32; }
+        .label-product { background: #fff3e0; color: #e65100; }
+        .label-practice { background: #f3e5f5; color: #6a1b9a; }
+        .label-case { background: #fce4ec; color: #c62828; }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--gray-900);
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.92rem;
+            color: var(--gray-800);
+            line-height: 1.5;
+        }
+        .card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .card p {
+            font-size: 0.92rem;
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 12px;
+            font-size: 0.88rem;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .kpi-item {
+            background: var(--gray-100);
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: var(--primary-dark);
+            border: 1px solid var(--gray-200);
+            position: relative;
+        }
+        .kpi-item.web-traffic {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 1.5px solid #f57c00;
+            color: #e65100;
+        }
+        .kpi-item.web-traffic::after {
+            content: '🌐';
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            font-size: 0.7rem;
+            background: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, #fafafa, #f5f5f5);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 12px;
+        }
+
+        /* Meta Ads Manager Mockup */
+        .ads-manager-mockup {
+            background: #ffffff;
+            border: 1px solid #dddfe2;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 16px;
+            font-size: 0.78rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .ads-manager-mockup .am-header {
+            background: #f0f2f5;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #dddfe2;
+        }
+        .ads-manager-mockup .am-header .am-logo {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 0.6rem;
+        }
+        .ads-manager-mockup .am-header span {
+            font-weight: 700;
+            color: var(--gray-800);
+            font-size: 0.75rem;
+        }
+        .ads-manager-mockup .am-body {
+            padding: 14px 16px;
+        }
+        .am-field {
+            margin-bottom: 10px;
+        }
+        .am-field-label {
+            font-size: 0.7rem;
+            color: #65676b;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .am-field-value {
+            background: #f0f2f5;
+            border: 1px solid #ced0d4;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.78rem;
+            color: var(--gray-900);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .am-field-value .am-dropdown {
+            color: #65676b;
+            font-size: 0.65rem;
+        }
+        .am-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+        }
+        .am-toggle-switch {
+            width: 32px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 9px;
+            position: relative;
+        }
+        .am-toggle-switch::after {
+            content: '';
+            position: absolute;
+            right: 3px;
+            top: 3px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+        }
+        .am-toggle-switch.off {
+            background: #ced0d4;
+        }
+        .am-toggle-switch.off::after {
+            right: auto;
+            left: 3px;
+        }
+        .am-tag {
+            display: inline-block;
+            background: #e7f3ff;
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+        .am-section-title {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f0f2f5;
+        }
+
+        /* Meta Ads Manager - Flow Inner Tabs */
+        .flow-tabs {
+            display: flex;
+            border-bottom: 2px solid #e4e6eb;
+            background: #f7f8fa;
+        }
+        .flow-tab-btn {
+            flex: 1;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #65676b;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .flow-tab-btn:hover {
+            color: #1877F2;
+            background: #e7f3ff;
+        }
+        .flow-tab-btn.flow-tab-active {
+            color: #1877F2;
+            border-bottom-color: #1877F2;
+            background: white;
+        }
+        .flow-tab-btn .tab-num {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: #65676b;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.65rem;
+            line-height: 18px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+        .flow-tab-btn.flow-tab-active .tab-num {
+            background: #1877F2;
+        }
+        .flow-tab-btn.flow-tab-complete .tab-num {
+            background: #42b72a;
+        }
+        .flow-tab-btn.flow-tab-complete {
+            color: #42b72a;
+        }
+        .flow-tab-panel {
+            display: none;
+            padding: 16px;
+        }
+        .flow-tab-panel.flow-panel-active {
+            display: block;
+        }
+
+        /* Meta Ads Manager - Campaign Creation Flow */
+        .ads-manager-flow {
+            background: #ffffff;
+            border: 1px solid #dddfe2;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 16px;
+            font-size: 0.78rem;
+        }
+        .ads-manager-flow .flow-header {
+            background: #1877F2;
+            color: white;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 0.82rem;
+        }
+        .ads-manager-flow .flow-header .meta-logo {
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1877F2;
+            font-weight: 900;
+            font-size: 0.7rem;
+        }
+        .flow-source {
+            background: #e8f0fe;
+            padding: 4px 16px;
+            font-size: 0.68rem;
+            color: #4a6fa5;
+            border-bottom: 1px solid #d4e3f8;
+        }
+        .flow-source a {
+            color: #1a5dab;
+            text-decoration: underline;
+        }
+        .flow-breadcrumb {
+            background: #f7f8fa;
+            padding: 8px 16px;
+            border-bottom: 1px solid #e4e6eb;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            font-size: 0.72rem;
+            color: #65676b;
+        }
+        .flow-breadcrumb .bc-active {
+            color: #1877F2;
+            font-weight: 700;
+        }
+        .flow-breadcrumb .bc-arrow {
+            color: #bec3c9;
+        }
+        .flow-steps {
+            padding: 16px;
+        }
+        .flow-step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .flow-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .flow-step-num {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #1877F2, #19AFFF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .flow-step-content {
+            flex: 1;
+        }
+        .flow-step-title {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #1c1e21;
+            margin-bottom: 4px;
+        }
+        .flow-step-detail {
+            font-size: 0.74rem;
+            color: #65676b;
+            line-height: 1.5;
+        }
+        .flow-field {
+            background: #f0f2f5;
+            border: 1px solid #ced0d4;
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-top: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            color: #1c1e21;
+            font-weight: 600;
+        }
+        .flow-field .field-icon {
+            color: #1877F2;
+        }
+        .flow-field .field-dropdown {
+            color: #65676b;
+            margin-left: 4px;
+        }
+        .flow-option-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .flow-option {
+            background: #e7f3ff;
+            border: 1px solid #bcdcff;
+            border-radius: 4px;
+            padding: 3px 8px;
+            font-size: 0.7rem;
+            color: #1877F2;
+            font-weight: 600;
+        }
+        .flow-option.selected {
+            background: #1877F2;
+            color: white;
+            border-color: #1877F2;
+        }
+        .flow-option.dimmed {
+            background: #f0f2f5;
+            color: #8a8d91;
+            border-color: #ced0d4;
+        }
+        .flow-toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .flow-toggle {
+            width: 28px;
+            height: 16px;
+            background: #42b72a;
+            border-radius: 8px;
+            position: relative;
+        }
+        .flow-toggle::after {
+            content: "";
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+        }
+        .flow-note {
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-top: 10px;
+            font-size: 0.72rem;
+            color: #8c6e00;
+        }
+        .flow-note strong {
+            color: #614700;
+        }
+
+        /* Gap Analysis Card */
+        .label-gap { background: #fce4ec; color: #b71c1c; }
+        .gap-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .gap-item:last-child { border-bottom: none; }
+        .gap-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: white;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .gap-content h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+        .gap-content p {
+            font-size: 0.82rem;
+            color: var(--gray-700);
+            line-height: 1.5;
+        }
+        .gap-meta-advantage {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .gap-tiktok-action {
+            font-size: 0.75rem;
+            color: #e65100;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+        .case-study .case-brand {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .case-study .case-result {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        /* Web Traffic Callout */
+        .web-traffic-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #fff3e0;
+            color: #e65100;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255,255,255,0.7);
+            padding: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        .footer strong { color: white; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .nav-bar { padding: 12px 16px; }
+            .container { padding: 24px 16px; }
+        }
+
+        /* Section Intro */
+        .section-intro {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary);
+        }
+        .section-intro h2 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .section-intro p {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        .full-width-card {
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>Meta Vertical Playbook Research</h1>
+    <p class="subtitle">Competitive Intelligence Report — Meta's Industry-Specific Advertising Methodology & Web Traffic Strategies</p>
+    <span class="badge">PSO COMPETITIVE RESEARCH • WEB TRAFFIC FOCUS • 2025-2026</span>
+</section>
+
+<!-- Tab Navigation -->
+<nav class="tab-bar">
+    <div class="tab-btn active" data-tab="automotive"><span class="tab-icon">🚗</span>Automotive</div>
+    <div class="tab-btn" data-tab="travel"><span class="tab-icon">✈️</span>Travel</div>
+    <div class="tab-btn" data-tab="ecommerce"><span class="tab-icon">🛒</span>E-commerce</div>
+    <div class="tab-btn" data-tab="retail"><span class="tab-icon">🏬</span>Retail</div>
+    <div class="tab-btn" data-tab="cpg"><span class="tab-icon">📦</span>CPG</div>
+    <div class="tab-btn" data-tab="entertainment"><span class="tab-icon">🎬</span>Entertainment & Media</div>
+    <div class="tab-btn" data-tab="professional"><span class="tab-icon">💼</span>Professional Services</div>
+    <div class="tab-btn" data-tab="summary"><span class="tab-icon">📊</span>Summary</div>
+</nav>
+
+<div class="container">
+
+<!-- Intro -->
+<div class="section-intro">
+    <h2>Research Scope & Methodology</h2>
+    <p>This page consolidates Meta's official vertical industry Playbooks, best practices, and public case studies across 7 key verticals. Content is curated with a <strong>web traffic lens</strong> — emphasizing how Meta positions its products to drive quality website visits, on-site conversions, and landing page engagement. Data sourced from Meta for Business official pages, Advantage+ documentation, Meta Foresight insights, and verified third-party case studies.</p>
+    <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--gray-200); display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <span style="font-size:0.82rem; font-weight:700; color:var(--gray-700);">KPI Legend:</span>
+        <span style="display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#fff3e0,#ffe0b2); border:1.5px solid #f57c00; padding:4px 12px; border-radius:6px; font-size:0.78rem; font-weight:700; color:#e65100;">🌐 Web Traffic Related KPI</span>
+        <span style="display:inline-flex; align-items:center; gap:6px; background:var(--gray-100); border:1px solid var(--gray-200); padding:4px 12px; border-radius:6px; font-size:0.78rem; font-weight:700; color:var(--primary-dark);">General KPI</span>
+    </div>
+</div>
+
+<!-- ============ AUTOMOTIVE ============ -->
+<div class="tab-content active" id="tab-automotive">
+<section class="industry-section" id="automotive">
+    <div class="industry-header">
+        <div class="industry-icon">🚗</div>
+        <h2>Automotive</h2>
+    </div>
+    <div class="cards-grid">
+        <!-- Needs & Pain Points -->
+        <div class="card">
+            <span class="card-label label-needs">Industry Needs & Pain Points</span>
+            <h3>Client Challenges & KPIs</h3>
+            <ul>
+                <li>Long purchase cycle (3–6 months research phase) — need persistent visibility across the funnel</li>
+                <li>Fragmented buyer journey: online research → dealer visit → purchase; hard to attribute digital touchpoints</li>
+                <li>OEMs need to drive traffic to model configurator pages & dealer locators</li>
+                <li>Dealers need cost-efficient leads for test drives and inventory inquiries</li>
+                <li>Shift to EV creates new audiences with different discovery behavior</li>
+            </ul>
+            <div class="kpi-grid">
+                <div class="kpi-item">Cost Per Lead (CPL)</div>
+                <div class="kpi-item web-traffic">Landing Page Views</div>
+                <div class="kpi-item web-traffic">Vehicle Detail Page (VDP) Views</div>
+                <div class="kpi-item">Test Drive Requests</div>
+                <div class="kpi-item">Dealer Visits (Offline)</div>
+                <div class="kpi-item web-traffic">Cost Per VDP View</div>
+            </div>
+        </div>
+
+        <!-- GTM Value Proposition -->
+        <div class="card">
+            <span class="card-label label-gtm">GTM Value Proposition</span>
+            <h3>Meta's Positioning for Auto</h3>
+            <ul>
+                <li><strong>"Move metal with mobile"</strong> — reach buyers in discovery moments on mobile where 71% of auto research happens</li>
+                <li>Connect online intent to offline dealership outcomes with Offline Conversions API</li>
+                <li>Full-funnel coverage: Awareness (Video Views) → Consideration (Traffic to VDPs) → Conversion (Lead Forms/Store Visits)</li>
+                <li>AI-powered audience matching from cross-device signals to identify in-market buyers</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Web Traffic Angle:</strong> Meta pushes Traffic + Landing Page View objectives for OEMs to drive users to model pages, configurators, and dealer inventory sites. Automotive Inventory Ads (AIA) dynamically link to real-time VDPs.
+            </div>
+        </div>
+
+        <!-- Key Products -->
+        <div class="card">
+            <span class="card-label label-product">Key Product Capabilities</span>
+            <h3>Meta Products for Auto<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
+            <ul>
+                <li><strong>Automotive Inventory Ads (AIA):</strong> Dynamic catalog-driven ads showing real-time vehicle inventory, linking to VDP pages on dealer websites</li>
+                <li><strong>Automotive Model Ads:</strong> Cross-device intent signals to promote relevant models/offers with Traffic objective to configurator</li>
+                <li><strong>Dynamic Ads for Lead Gen:</strong> Vehicle catalog + lead forms; inventory feeds auto-update ads, supporting dealer locator integration</li>
+                <li><strong>Advantage+ Audience:</strong> AI finds high-intent buyers beyond manual targeting</li>
+                <li><strong>Offline Conversions API:</strong> Match dealership CRM data back to ad impressions for closed-loop measurement</li>
+                <li><strong>Reels & Video Ads:</strong> Pattern-interrupt storytelling for model launches and test drive CTAs</li>
+            </ul>
+            <!-- Meta Ads Manager: Full Traffic Campaign Creation Flow for Automotive -->
+            <div class="ads-manager-flow" data-flow="auto">
+                <div class="flow-header">
+                    <div class="meta-logo">M</div>
+                    Meta Ads Manager — Traffic Campaign Creation Flow (Automotive)
+                </div>
+                <div class="flow-source">Source: <a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager</a></div>
+                <div class="flow-tabs">
+                    <div class="flow-tab-btn flow-tab-active" data-flowtab="campaign">
+                        <span class="tab-num">1</span> Campaign
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="adset">
+                        <span class="tab-num">2</span> Ad Set
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="ad">
+                        <span class="tab-num">3</span> Ad
+                    </div>
+                </div>
+
+                <!-- Campaign Level -->
+                <div class="flow-tab-panel flow-panel-active" data-flowpanel="campaign">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Objective</div>
+                                <div class="flow-step-detail">Select "Traffic" to drive users to dealer VDP pages</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option dimmed">Awareness</span>
+                                    <span class="flow-option selected">Traffic</span>
+                                    <span class="flow-option dimmed">Engagement</span>
+                                    <span class="flow-option dimmed">Leads</span>
+                                    <span class="flow-option dimmed">Sales</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Buying Type</div>
+                                <div class="flow-step-detail">Auction (standard) for performance optimization</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Auction</span>
+                                    <span class="flow-option dimmed">Reservation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Budget Optimization (CBO)</div>
+                                <div class="flow-step-detail">Enable Advantage Campaign Budget to auto-distribute across ad sets</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage Campaign Budget</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">💰</span> Daily Budget: $500/day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Set Level -->
+                <div class="flow-tab-panel" data-flowpanel="adset">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Conversion Location</div>
+                                <div class="flow-step-detail">Send traffic to dealer website (Vehicle Detail Pages)</div>
+                                <div class="flow-field"><span class="field-icon">🌐</span> Website <span class="field-dropdown">▼</span></div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Performance Goal</div>
+                                <div class="flow-step-detail">Maximize Landing Page Views — optimizes for users who fully load the VDP (requires Pixel PageView event). Filters out accidental clicks, reducing bounce rate 30%+.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option dimmed">Link Clicks</span>
+                                    <span class="flow-option selected">Landing Page Views</span>
+                                    <span class="flow-option dimmed">Daily Unique Reach</span>
+                                </div>
+                                <div class="flow-note"><strong>Key:</strong> LPV only counts when Pixel fires PageView on the destination. Link Clicks count any outbound tap, even if page never loads.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Audience Targeting</div>
+                                <div class="flow-step-detail">Use Advantage+ Audience with automotive interest signals + dealer geo-radius</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Audience</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">📍</span> Location: 30mi radius of dealership</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🎯</span> Interests: Automotive, Car Shopping, SUVs | Age: 25-65</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🔄</span> Custom Audience: Website visitors (VDP views, 14 days, no lead)</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Placements</div>
+                                <div class="flow-step-detail">Advantage+ Placements for maximum reach across all Meta surfaces</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Placements</span>
+                                </div>
+                                <div class="flow-step-detail" style="margin-top:4px; color:#8a8d91;">Feed, Stories, Reels, In-Stream, Search, Audience Network, Messenger</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">5</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Budget & Schedule</div>
+                                <div class="flow-step-detail">Set ad set budget (if CBO off) or let campaign budget auto-allocate. Schedule: run continuously or set start/end dates.</div>
+                                <div class="flow-field"><span class="field-icon">📅</span> Start: Immediately | End: Ongoing | Bid: Lowest cost (auto)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Level -->
+                <div class="flow-tab-panel" data-flowpanel="ad">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Ad Format</div>
+                                <div class="flow-step-detail">Use Automotive Inventory Ads (AIA) — catalog feed auto-generates vehicle cards with make, model, price, availability</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Catalog / Dynamic Ads (AIA)</span>
+                                    <span class="flow-option dimmed">Single Image</span>
+                                    <span class="flow-option dimmed">Carousel</span>
+                                    <span class="flow-option dimmed">Video</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">📦</span> Catalog: Dealer_Vehicles_Feed_2026.csv | Filter: type="SUV" AND in_stock=true</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Creative & Copy</div>
+                                <div class="flow-step-detail">Dynamic creative from catalog fields. Primary text, headline, description auto-populated from feed. Add Advantage+ Creative for AI enhancements.</div>
+                                <div class="flow-field"><span class="field-icon">✏️</span> Headline: {vehicle_year} {make} {model} — From ${price}</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📝</span> Primary Text: Explore our {vehicle_type} inventory. Schedule your test drive today.</div>
+                                <div class="flow-toggle-row" style="margin-top:6px;">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Creative (auto-enhance)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Destination URL & Deep Links</div>
+                                <div class="flow-step-detail">Each product card links to its specific VDP URL from the catalog feed. Enable deep linking for in-app browsers.</div>
+                                <div class="flow-field"><span class="field-icon">🔗</span> Website URL: {vehicle_url} (dynamic per vehicle from feed)</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📱</span> Deep Link: enabled | UTM: source=meta&medium=paid&campaign={campaign_name}</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Call to Action & Tracking</div>
+                                <div class="flow-step-detail">CTA button + tracking setup (Pixel + CAPI)</div>
+                                <div class="flow-field"><span class="field-icon">👆</span> CTA: "Learn More" or "See Inventory" <span class="field-dropdown">▼</span></div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📊</span> Tracking: Meta Pixel + Conversions API (CAPI) | Attribution: 7-day click, 1-day view</div>
+                                <div class="flow-note"><strong>CAPI Tip:</strong> Pass back dealer CRM events (test drive booked, showroom visit) for offline attribution and signal enrichment.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="card">
+            <span class="card-label label-practice">Best Practices</span>
+            <h3>Web Traffic Optimization for Auto</h3>
+            <ul>
+                <li>Use <strong>Landing Page View optimization</strong> (not Link Click) to find users who actually load VDPs — reduces bounce 30%+</li>
+                <li>Set up vehicle catalogs with deep links to individual inventory pages on dealer sites</li>
+                <li>Layer audiences: Broad prospecting → Retarget VDP visitors → Lead form for test drive (sequential funnel)</li>
+                <li>Creative: First 3 seconds must show the vehicle; include price/offer in overlay text; use Reels for walkarounds</li>
+                <li>Run 7+ days minimum to exit learning phase; use 50+ weekly conversions per ad set benchmark</li>
+                <li>Implement CAPI (Conversions API) to pass back dealer visits and test drive completions for signal enrichment</li>
+            </ul>
+        </div>
+
+        <!-- TikTok Gap Analysis (Calibrated per TT Web Traffic Pitch Deck, Mar 2026) -->
+        <div class="card full-width-card">
+            <span class="card-label label-gap">TikTok Web Traffic Gap Analysis</span>
+            <h3>Areas for TikTok to Improve vs. Meta — Automotive</h3>
+            <p style="font-size:0.78rem; color:#666; margin-bottom:12px; font-style:italic;">Note: TikTok already offers Landing Page Views, Engaged Sessions, and Clicks optimization goals. Gaps below reflect capabilities Meta has that TikTok still lacks.</p>
+            <div class="gap-item">
+                <div class="gap-icon">1</div>
+                <div class="gap-content">
+                    <h4>No Automotive Inventory Ads (Vertical Catalog with VDP Deep Links)</h4>
+                    <p>Meta's AIA automatically renders vehicle-specific creative (make, model, trim, price) from dealer inventory feeds and deep-links each card to the individual VDP page. TikTok's Image Catalog Carousel (alpha) is generic — it lacks automotive-specific fields (mileage, VIN, dealer location) and does not support real-time inventory sync with DMS platforms.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: AIA with dynamic vehicle feeds, real-time inventory sync, VDP deep-links per listing</div>
+                    <div class="gap-tiktok-action">TikTok Action: Extend Image Catalog Carousel with auto-vertical template (vehicle schema fields); add DMS feed connectors for real-time stock updates</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">2</div>
+                <div class="gap-content">
+                    <h4>Offline Conversion Loop (Showroom Visit Attribution)</h4>
+                    <p>Meta's Offline Conversions API with pre-built auto-industry CRM templates (DMS integration like CDK, Reynolds) enables closed-loop dealer visit attribution. TikTok's Events API supports offline events but lacks auto-vertical CRM connectors and dealer visit attribution models.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Offline Conversions API with DMS integrations → attribute showroom visits to ad exposure</div>
+                    <div class="gap-tiktok-action">TikTok Action: Build pre-built auto CRM connectors for Events API; enable dealer visit attribution modeling</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">3</div>
+                <div class="gap-content">
+                    <h4>No Cross-Device Conversion Path for High-Consideration Purchases</h4>
+                    <p>Auto buyers typically view ads on mobile but complete configurator/lead forms on desktop. Meta's identity graph connects cross-device touchpoints and credits Traffic campaigns for downstream desktop conversions. TikTok's Assisted Conversion Metrics (28-day window) are limited to in-platform attribution and don't robustly track mobile-ad-view → desktop-conversion paths.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Cross-device identity graph → mobile ad view credited for desktop configurator completion</div>
+                    <div class="gap-tiktok-action">TikTok Action: Strengthen cross-device attribution for Assisted Conversion model; enable Events API to stitch mobile click → desktop conversion via 1P login or probabilistic matching</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Studies -->
+        <div class="card full-width-card">
+            <span class="card-label label-case">Case Studies</span>
+            <h3>Representative Results</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:16px;">
+                <div class="case-study">
+                    <div class="case-brand">Major European OEM (EV Launch Campaign)</div>
+                    <p>Used Automotive Model Ads with Traffic objective optimized for Landing Page Views to drive configurator visits for new EV model. Combined Reels video creative with carousel showing trim options linking to build-your-own page.</p>
+                    <span class="case-result">47% lower cost per VDP view vs. standard campaigns</span>
+                    <span class="case-result">3.2x increase in configurator traffic</span>
+                </div>
+                <div class="case-study">
+                    <div class="case-brand">Multi-Location Dealer Group (US)</div>
+                    <p>Deployed AIA (Automotive Inventory Ads) dynamically showing in-stock vehicles. Lead forms with dealer locator integration. Offline Conversions API matched showroom visits back to ad exposure.</p>
+                    <span class="case-result">€3 cost per lead with Dynamic Ads</span>
+                    <span class="case-result">22% lift in attributable showroom visits</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ TRAVEL ============ -->
+<div class="tab-content" id="tab-travel">
+<section class="industry-section" id="travel">
+    <div class="industry-header">
+        <div class="industry-icon">✈️</div>
+        <h2>Travel</h2>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <span class="card-label label-needs">Industry Needs & Pain Points</span>
+            <h3>Client Challenges & KPIs</h3>
+            <ul>
+                <li>Highly competitive: travelers check 38+ touchpoints before booking; need to capture intent early</li>
+                <li>Perishable inventory (seats/rooms) requires real-time pricing in ads</li>
+                <li>Seasonality and fare sensitivity make budget pacing difficult</li>
+                <li>Attribution complexity: research on mobile → book on desktop (cross-device gap)</li>
+                <li>Need to drive qualified traffic to booking engines, not just reach</li>
+                <li>Retargeting abandoned searches/carts is critical — 81% abandon before booking</li>
+            </ul>
+            <div class="kpi-grid">
+                <div class="kpi-item">Cost Per Booking</div>
+                <div class="kpi-item">ROAS (Return on Ad Spend)</div>
+                <div class="kpi-item web-traffic">Website Sessions</div>
+                <div class="kpi-item web-traffic">Search Initiated</div>
+                <div class="kpi-item web-traffic">Booking Engine Visits</div>
+                <div class="kpi-item web-traffic">Cost Per Site Visit</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-gtm">GTM Value Proposition</span>
+            <h3>Meta's Positioning for Travel</h3>
+            <ul>
+                <li><strong>"Inspire → Plan → Book"</strong> — capture travelers in the dreaming phase with immersive video, convert with dynamic retargeting</li>
+                <li>Cross-device identity graph closes the mobile-research → desktop-book gap</li>
+                <li>Dynamic Ads for Travel (DAT) auto-match itineraries to users based on site/app behavior</li>
+                <li>Broad reach at low CPMs for inspiration + precision retargeting for conversion</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Web Traffic Angle:</strong> Meta's Travel Ads drive users directly to specific listing pages (hotel/flight results) pre-populated with their searched dates/destinations — dramatically increasing booking page sessions and reducing friction.
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-product">Key Product Capabilities</span>
+            <h3>Meta Products for Travel<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
+            <ul>
+                <li><strong>Dynamic Ads for Travel (DAT):</strong> Retarget users who searched/viewed properties with personalized ads linking directly to booking pages</li>
+                <li><strong>Broad Audience DAT:</strong> Prospecting mode — show relevant destinations to users who haven't visited your site yet, driving new traffic</li>
+                <li><strong>Trip Consideration:</strong> Custom audience of users indicating travel intent; optimized for Traffic objective to booking engine</li>
+                <li><strong>Collection Ads:</strong> Immersive canvas showcasing multiple destinations → deep-link to respective landing pages</li>
+                <li><strong>Advantage+ Placements:</strong> Auto-distribute across Feed, Stories, Reels, Audience Network for max reach at lowest cost</li>
+                <li><strong>Conversions API:</strong> Pass booking completions + revenue data back for value-based optimization</li>
+            </ul>
+            <!-- Meta Ads Manager: Full Traffic Campaign Creation Flow for Travel -->
+            <div class="ads-manager-flow" data-flow="travel">
+                <div class="flow-header">
+                    <div class="meta-logo">M</div>
+                    Meta Ads Manager — Traffic Campaign Creation Flow (Travel)
+                </div>
+                <div class="flow-source">Source: <a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager</a></div>
+                <div class="flow-tabs">
+                    <div class="flow-tab-btn flow-tab-active" data-flowtab="campaign">
+                        <span class="tab-num">1</span> Campaign
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="adset">
+                        <span class="tab-num">2</span> Ad Set
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="ad">
+                        <span class="tab-num">3</span> Ad
+                    </div>
+                </div>
+
+                <!-- Campaign Level -->
+                <div class="flow-tab-panel flow-panel-active" data-flowpanel="campaign">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Objective: Traffic</div>
+                                <div class="flow-step-detail">Drive users to booking engine pages. For retargeting past searchers, alternatively use Sales with catalog.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option dimmed">Awareness</span>
+                                    <span class="flow-option selected">Traffic</span>
+                                    <span class="flow-option dimmed">Sales (retarget)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Buying Type & Budget</div>
+                                <div class="flow-step-detail">Auction buying. Enable Advantage Campaign Budget for multi-destination ad sets.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Auction</span>
+                                    <span class="flow-option dimmed">Reservation</span>
+                                </div>
+                                <div class="flow-toggle-row" style="margin-top:6px;">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage Campaign Budget</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Set Level -->
+                <div class="flow-tab-panel" data-flowpanel="adset">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Conversion Location: Website</div>
+                                <div class="flow-step-detail">Direct users to hotel/flight booking pages on your OTA or brand site</div>
+                                <div class="flow-field"><span class="field-icon">🌐</span> Website (Booking Engine) <span class="field-dropdown">▼</span></div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Performance Goal: Landing Page Views</div>
+                                <div class="flow-step-detail">Optimize for users who fully load the booking page. Critical for travel where pages are heavy — slow loaders = wasted spend.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option dimmed">Link Clicks</span>
+                                    <span class="flow-option selected">Landing Page Views</span>
+                                </div>
+                                <div class="flow-note"><strong>Travel Tip:</strong> LPV filters out users on slow connections who never load booking pages. Ensures every counted visit is a real session.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Audience: Travel Intent Signals</div>
+                                <div class="flow-step-detail">Advantage+ Audience with travel behaviors + retarget searchers who didn't book</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Audience</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">🎯</span> Interests: Travel, Vacations, Hotels | Behaviors: Frequent travelers</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🔄</span> Custom: Website visitors (Search event, 14 days, no Purchase)</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Placements & Schedule</div>
+                                <div class="flow-step-detail">Advantage+ Placements. Schedule aligned with booking seasonality.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Placements</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">📅</span> Flight dates: Peak season push | Bid: Lowest cost</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Level -->
+                <div class="flow-tab-panel" data-flowpanel="ad">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Ad Format: Dynamic Ads for Travel (DAT)</div>
+                                <div class="flow-step-detail">Connect travel catalog feed — ads auto-show relevant hotels/flights with live pricing, dates, availability. Each card deep-links to specific listing.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Dynamic Ads (Catalog/DAT)</span>
+                                    <span class="flow-option dimmed">Carousel</span>
+                                    <span class="flow-option dimmed">Video</span>
+                                    <span class="flow-option dimmed">Collection</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">📦</span> Catalog: Hotel_Feed.csv | Fields: name, price, availability, image, destination_url</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Creative & Dynamic Fields</div>
+                                <div class="flow-step-detail">Dynamic creative pulls from catalog: hotel name, nightly rate, star rating, dates. Overlay template auto-renders.</div>
+                                <div class="flow-field"><span class="field-icon">✏️</span> Headline: {hotel_name} — From ${price_per_night}/night</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📝</span> Primary: Escape to {destination}. {star_rating}★ rated. Book now for {check_in_date}.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Destination URL (Dynamic Deep Link)</div>
+                                <div class="flow-step-detail">Each product card links to booking page with pre-filled dates from user's search context</div>
+                                <div class="flow-field"><span class="field-icon">🔗</span> URL: {hotel_url}?checkin={check_in}&checkout={check_out}&guests={num_guests}</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Tracking: Pixel + CAPI with Travel Events</div>
+                                <div class="flow-step-detail">Travel-specific pixel events for full booking funnel attribution</div>
+                                <div class="flow-field"><span class="field-icon">📊</span> Events: Search → ViewContent → InitiateCheckout → Purchase</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">⏱️</span> Attribution: 7-day click / 1-day view (or 28-day for long booking cycles)</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🔌</span> CAPI: Server-side booking confirmations for cross-device attribution</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-practice">Best Practices</span>
+            <h3>Web Traffic Optimization for Travel</h3>
+            <ul>
+                <li>Use <strong>Landing Page View objective</strong> for prospecting; switch to Conversions (Purchase) for retargeting</li>
+                <li>Catalog feed must include real-time pricing, availability, and deep links to specific listing pages</li>
+                <li>Creative: Use Reels with destination footage (first 2 sec hook); show price in ad overlay</li>
+                <li>Retarget within 7-14 day window for travel (beyond that, intent decays)</li>
+                <li>Broad Audience DAT: use 180-day pixel data for seed signals; let AI find lookalike travelers</li>
+                <li>A/B test: Direct-to-booking-page vs. inspirational landing page → measure booking conversion lift</li>
+            </ul>
+        </div>
+
+        <!-- TikTok Gap Analysis (Calibrated per TT Web Traffic Pitch Deck, Mar 2026) -->
+        <div class="card full-width-card">
+            <span class="card-label label-gap">TikTok Web Traffic Gap Analysis</span>
+            <h3>Areas for TikTok to Improve vs. Meta — Travel</h3>
+            <p style="font-size:0.78rem; color:#666; margin-bottom:12px; font-style:italic;">Note: TikTok already offers Landing Page Views, Engaged Sessions, and Clicks. Gaps below are Meta-specific capabilities TikTok lacks.</p>
+            <div class="gap-item">
+                <div class="gap-icon">1</div>
+                <div class="gap-content">
+                    <h4>No Dynamic Ads for Travel (DAT) with Real-Time Availability Feeds</h4>
+                    <p>Meta's DAT auto-populates ads with live hotel/flight pricing, dates, and availability from advertiser catalog feeds — deep-linking to specific booking pages with pre-filled dates. TikTok's Image Catalog Carousel doesn't support travel-specific dynamic fields (check-in/out dates, real-time pricing, availability status).</p>
+                    <div class="gap-meta-advantage">Meta Advantage: DAT renders live pricing/dates/availability from travel feeds → deep-link to booking engine with pre-filled parameters</div>
+                    <div class="gap-tiktok-action">TikTok Action: Extend catalog format with travel-vertical schema (dates, pricing, availability); support URL parameter injection for booking page pre-fill</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">2</div>
+                <div class="gap-content">
+                    <h4>No Travel-Specific Pixel Events and Retargeting Audiences</h4>
+                    <p>Meta defines travel-vertical pixel events (Search, ViewContent with destination/date parameters, InitiateCheckout for bookings) and auto-builds retargeting audiences from these signals with a 14-day attribution window. TikTok Pixel supports generic events but lacks travel-specific event schemas and pre-built travel-intent audience segments.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Travel-vertical pixel events (SearchFlight, ViewHotel) → auto-build intent audiences for retargeting</div>
+                    <div class="gap-tiktok-action">TikTok Action: Define travel-vertical event schema in Events API; build pre-configured travel-intent Custom Audiences from destination/date signals</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">3</div>
+                <div class="gap-content">
+                    <h4>Limited Cross-Device Booking Attribution</h4>
+                    <p>Travel booking journeys are highly cross-device (mobile inspiration → desktop booking). Meta's identity graph connects in-app ad engagement to desktop booking completions. TikTok's Assisted Conversion model (28-day) captures some multi-touch value, but cross-device stitching for travel's research-to-book gap remains weak.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Cross-device identity graph → attribute mobile ad views to desktop booking conversions (often 3-7 day gap)</div>
+                    <div class="gap-tiktok-action">TikTok Action: Enhance Events API server-side matching for travel OTAs; extend Assisted Conversion window consideration for travel's longer purchase cycle</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card full-width-card">
+            <span class="card-label label-case">Case Studies</span>
+            <h3>Representative Results</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:16px;">
+                <div class="case-study">
+                    <div class="case-brand">Trivago (Hotel Metasearch)</div>
+                    <p>Used Dynamic Ads for Travel to retarget users who searched hotels on their website. Personalized ads showed the exact hotel/dates viewed with live pricing, deep-linking back to booking page.</p>
+                    <span class="case-result">2x higher click-through rate vs. standard ads</span>
+                    <span class="case-result">36% lower cost per website visit</span>
+                </div>
+                <div class="case-study">
+                    <div class="case-brand">Regional Airline (Southeast Asia)</div>
+                    <p>Combined Broad Audience DAT (prospecting new route awareness with Traffic objective) + retargeting abandoners with fare-specific dynamic ads. CAPI integrated for booking attribution.</p>
+                    <span class="case-result">45% increase in booking page sessions</span>
+                    <span class="case-result">3.8x ROAS on retargeting campaigns</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ ECOMMERCE ============ -->
+<div class="tab-content" id="tab-ecommerce">
+<section class="industry-section" id="ecommerce">
+    <div class="industry-header">
+        <div class="industry-icon">🛒</div>
+        <h2>E-commerce</h2>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <span class="card-label label-needs">Industry Needs & Pain Points</span>
+            <h3>Client Challenges & KPIs</h3>
+            <ul>
+                <li>Rising CPMs and iOS privacy changes (ATT) reduced signal quality — need more efficient spend</li>
+                <li>Cart abandonment rates of 70%+ — need persistent retargeting to recover revenue</li>
+                <li>Pressure to show measurable ROAS — every dollar must be attributed</li>
+                <li>Balancing prospecting (new customer acquisition) vs. retargeting (existing customers)</li>
+                <li>Creative fatigue — algorithm groups similar-looking ads, reducing effective reach</li>
+                <li>Driving quality web traffic that converts, not just clicks that bounce</li>
+            </ul>
+            <div class="kpi-grid">
+                <div class="kpi-item">ROAS</div>
+                <div class="kpi-item">Cost Per Purchase</div>
+                <div class="kpi-item">AOV (Average Order Value)</div>
+                <div class="kpi-item web-traffic">Add to Cart Rate</div>
+                <div class="kpi-item web-traffic">Landing Page CTR</div>
+                <div class="kpi-item">New Customer %</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-gtm">GTM Value Proposition</span>
+            <h3>Meta's Positioning for E-commerce</h3>
+            <ul>
+                <li><strong>"AI-powered commerce engine"</strong> — let Advantage+ find buyers, optimize creative, and maximize purchases automatically</li>
+                <li>Largest commerce discovery platform: 70%+ of social commerce spending flows through Meta</li>
+                <li>Full-funnel from discovery to purchase without leaving the ecosystem (Shops) or via website conversion</li>
+                <li>Advantage+ Shopping consolidates audience, placement, and creative into one AI-optimized campaign</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Web Traffic Angle:</strong> For web-based stores (non-Shops), Meta positions Advantage+ Sales campaigns with website purchase optimization. The funnel drives traffic to PDPs via catalog ads, optimizing for on-site conversion events passed via Pixel + CAPI.
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-product">Key Product Capabilities</span>
+            <h3>Meta Products for E-commerce<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
+            <ul>
+                <li><strong>Advantage+ Sales Campaigns (ASC):</strong> AI-automated campaign type that optimizes across prospecting + retargeting in a single budget, driving purchases on websites</li>
+                <li><strong>Dynamic Product Ads (DPA/DABA):</strong> Auto-shows products from catalog to users who viewed/added-to-cart on website</li>
+                <li><strong>Catalog Ads (Broad):</strong> Prospect new buyers by showing relevant products from catalog based on AI signals — drives new site traffic</li>
+                <li><strong>Conversions API (CAPI):</strong> Server-side event tracking for accurate attribution post-iOS14; sends purchase, add-to-cart, page view signals</li>
+                <li><strong>Value-Based Optimization:</strong> Optimize toward highest-AOV purchasers, not just any purchase</li>
+                <li><strong>Reels Ads + Collection Ads:</strong> Shoppable video → instant storefront → website checkout deep-link</li>
+            </ul>
+            <!-- Meta Ads Manager: Full Traffic Campaign Creation Flow for E-commerce -->
+            <div class="ads-manager-flow" data-flow="ecom">
+                <div class="flow-header">
+                    <div class="meta-logo">M</div>
+                    Meta Ads Manager — Advantage+ Shopping / Traffic Flow (E-commerce)
+                </div>
+                <div class="flow-source">Source: <a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager</a></div>
+                <div class="flow-tabs">
+                    <div class="flow-tab-btn flow-tab-active" data-flowtab="campaign">
+                        <span class="tab-num">1</span> Campaign
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="adset">
+                        <span class="tab-num">2</span> Ad Set
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="ad">
+                        <span class="tab-num">3</span> Ad
+                    </div>
+                </div>
+
+                <!-- Campaign Level -->
+                <div class="flow-tab-panel flow-panel-active" data-flowpanel="campaign">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Type Selection</div>
+                                <div class="flow-step-detail">Advantage+ Shopping Campaign (ASC) for full AI automation, or manual Traffic for top-of-funnel LPV optimization.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Advantage+ Shopping</span>
+                                    <span class="flow-option">Traffic (Manual)</span>
+                                    <span class="flow-option dimmed">Sales (Catalog)</span>
+                                </div>
+                                <div class="flow-note"><strong>ASC vs. Traffic:</strong> ASC auto-handles audience/budget/creative. Traffic gives manual control over LPV optimization and targeting. Use both in parallel for full-funnel coverage.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Budget</div>
+                                <div class="flow-step-detail">ASC: single campaign budget, AI distributes. Traffic: CBO or ad set budgets.</div>
+                                <div class="flow-field"><span class="field-icon">💰</span> Daily Budget: $1,000 | Advantage Campaign Budget: ON</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Set Level -->
+                <div class="flow-tab-panel" data-flowpanel="adset">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Conversion Location & Goal</div>
+                                <div class="flow-step-detail">Website. For Traffic: optimize for LPV. For ASC: optimize for Purchase Value (VBO).</div>
+                                <div class="flow-field"><span class="field-icon">🌐</span> Website <span class="field-dropdown">▼</span></div>
+                                <div class="flow-option-row" style="margin-top:6px;">
+                                    <span class="flow-option dimmed">Link Clicks</span>
+                                    <span class="flow-option selected">Landing Page Views (Traffic)</span>
+                                </div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Maximize Purchase Value / VBO (ASC)</span>
+                                    <span class="flow-option dimmed">Maximize Purchases</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Audience & Customer Budget Split</div>
+                                <div class="flow-step-detail">ASC: AI auto-balances prospecting vs. retargeting. Set existing customer budget cap.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Audience</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">👥</span> Existing customer cap: 30% | New prospecting: 70%</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🔄</span> Retarget: Cart abandoners (7 days) + Product viewers (14 days)</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Placements</div>
+                                <div class="flow-step-detail">Advantage+ Placements recommended. For Reels-heavy creative, consider manual placement weighting.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Placements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Level -->
+                <div class="flow-tab-panel" data-flowpanel="ad">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Ad Format: Dynamic Product Ads</div>
+                                <div class="flow-step-detail">Connect product catalog. Dynamic Ads auto-render product cards from feed. Collection Ads for curated shopping experiences.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Dynamic Product Ads</span>
+                                    <span class="flow-option">Collection Ad</span>
+                                    <span class="flow-option">Carousel</span>
+                                    <span class="flow-option dimmed">Single Video</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">📦</span> Catalog: Product_Feed.csv | Filter: category="new_arrivals" AND in_stock=true</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Creative from Catalog</div>
+                                <div class="flow-step-detail">Auto-generated from feed fields. Enable Advantage+ Creative for AI text/image enhancements.</div>
+                                <div class="flow-field"><span class="field-icon">✏️</span> Headline: {product_name} — {sale_price} (was {original_price})</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📝</span> Primary: Shop {brand}. Free shipping on orders over $50.</div>
+                                <div class="flow-toggle-row" style="margin-top:6px;">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Creative</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Destination & Deep Links</div>
+                                <div class="flow-step-detail">Each product card links to individual PDP. Enable deep linking for in-app browser.</div>
+                                <div class="flow-field"><span class="field-icon">🔗</span> URL: {product_url} (dynamic per product from catalog feed)</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📱</span> Deep Link: ON | CTA: "Shop Now" <span class="field-dropdown">▼</span></div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Tracking & Attribution</div>
+                                <div class="flow-step-detail">Full e-commerce event stack via Pixel + CAPI. Value-based optimization requires Purchase event with value.</div>
+                                <div class="flow-field"><span class="field-icon">📊</span> Pixel + CAPI | Events: ViewContent → AddToCart → Purchase (with value)</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">⏱️</span> Attribution: 7-day click / 1-day view | VBO: enabled</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-practice">Best Practices</span>
+            <h3>Web Traffic Optimization for E-commerce</h3>
+            <ul>
+                <li>Deploy <strong>Advantage+ Sales</strong> as primary campaign; supplement with 1-2 manual prospecting campaigns for creative testing</li>
+                <li>Implement both Pixel + CAPI (dual signal) for maximum conversion data; match rate target: 95%+</li>
+                <li>Feed 50+ diverse creatives into ASC — algorithm auto-identifies top performers per audience segment</li>
+                <li>Use <strong>Landing Page View</strong> as secondary optimization for top-of-funnel campaigns driving category page traffic</li>
+                <li>Creative diversity is the new targeting: vary hooks, formats (static/video/carousel/Reels), angles, and personas</li>
+                <li>Exclude recent purchasers (7-14 days) from prospecting to avoid redundancy; use existing customer budget cap at 20-30%</li>
+                <li>Scale budget gradually (20% increments) based on CPA/ROAS thresholds to avoid exiting learning phase</li>
+            </ul>
+        </div>
+
+        <!-- TikTok Gap Analysis (Calibrated per TT Web Traffic Pitch Deck, Mar 2026) -->
+        <div class="card full-width-card">
+            <span class="card-label label-gap">TikTok Web Traffic Gap Analysis</span>
+            <h3>Areas for TikTok to Improve vs. Meta — E-commerce</h3>
+            <p style="font-size:0.78rem; color:#666; margin-bottom:12px; font-style:italic;">Note: TikTok already has LPV, Engaged Sessions, Image Catalog Carousel (alpha), Smart+ Campaigns, VBO for Web, and Consideration Ads signal. Gaps below are Meta-only capabilities.</p>
+            <div class="gap-item">
+                <div class="gap-icon">1</div>
+                <div class="gap-content">
+                    <h4>No Collection Ad Format for Immersive Shopping Browsing</h4>
+                    <p>Meta's Collection Ads open a full-screen Instant Experience (canvas) where users browse multiple catalog products without leaving the platform, then deep-link to individual PDPs. TikTok's catalog creatives display single-row carousels but lack an equivalent full-screen browsing canvas that showcases product grids with category tabs and curated collections — a format that drives 73% higher browse-to-PDP rate.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Collection format → full-screen Instant Experience grid → 73% higher browse-to-PDP rate vs. carousel</div>
+                    <div class="gap-tiktok-action">TikTok Action: Develop Collection-style ad format with full-screen product grid canvas; integrate with TikTok Instant Pages for immersive catalog browsing before website handoff</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">2</div>
+                <div class="gap-content">
+                    <h4>No Unified Prospecting + Retargeting Budget Split in One Campaign</h4>
+                    <p>Meta's ASC automatically allocates budget between new customer prospecting and existing customer retargeting within a single campaign, with advertiser-set caps on retargeting spend (e.g., "max 30% to existing"). TikTok's Smart+ Campaigns automate targeting and creative but require separate campaigns/ad groups for prospecting vs. retargeting — lacking auto budget allocation between the two pools.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: ASC single-campaign auto-splits budget between prospecting and retargeting with advertiser cap controls</div>
+                    <div class="gap-tiktok-action">TikTok Action: Add prospect/retarget budget allocation controls within Smart+ Catalog Ads; enable auto-split with cap settings similar to Meta's "existing customer budget cap"</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">3</div>
+                <div class="gap-content">
+                    <h4>Limited Dynamic Creative Optimization for Catalog → Web Traffic</h4>
+                    <p>Meta's catalog ads offer rich creative formats (carousel, collection, video overlay) with reliable PDP deep-links and "post ID engagement carry-forward" (social proof persists across audience changes). TikTok's Image Catalog Carousel is alpha-stage; it lacks collection-format, video overlay on catalog cards, and engagement inheritance when creatives are reused across ad groups.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Rich catalog creative (collection format, video overlay) + post engagement carry-forward across audience changes</div>
+                    <div class="gap-tiktok-action">TikTok Action: Graduate Image Catalog Carousel from alpha; add collection-style format and video overlay; implement engagement inheritance for catalog creatives</div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card full-width-card">
+            <span class="card-label label-case">Case Studies</span>
+            <h3>Representative Results</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:16px;">
+                <div class="case-study">
+                    <div class="case-brand">DTC Fashion Brand (Advantage+ Shopping)</div>
+                    <p>Migrated from manual campaign structure to Advantage+ Sales Campaign with 40+ diverse creatives. Used existing top-performing post IDs to carry forward engagement signals. Website purchase optimization with CAPI integration.</p>
+                    <span class="case-result">170% higher sales volume</span>
+                    <span class="case-result">68% increase in ROI</span>
+                    <span class="case-result">6x revenue scale</span>
+                </div>
+                <div class="case-study">
+                    <div class="case-brand">E-commerce Brand (Video Creative During Sale)</div>
+                    <p>Leveraged high-impact Reels video formats during sale period with Advantage+ Shopping. Sale-focused videos + UGC content drove traffic to promotion landing pages. Excluded recent purchasers to maximize new customer acquisition.</p>
+                    <span class="case-result">ROAS consistently above 4x</span>
+                    <span class="case-result">30% decrease in cost per purchase</span>
+                    <span class="case-result">106% increase in purchase volume</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ RETAIL ============ -->
+<div class="tab-content" id="tab-retail">
+<section class="industry-section" id="retail">
+    <div class="industry-header">
+        <div class="industry-icon">🏬</div>
+        <h2>Retail</h2>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <span class="card-label label-needs">Industry Needs & Pain Points</span>
+            <h3>Client Challenges & KPIs</h3>
+            <ul>
+                <li>Omnichannel attribution: connecting online ad exposure to both e-commerce AND in-store purchase</li>
+                <li>Seasonal peaks (holidays, back-to-school) require rapid scaling and creative refresh</li>
+                <li>Competing for share-of-wallet against pure-play e-commerce and marketplace sellers</li>
+                <li>Brands (CPGs) want co-op advertising to drive traffic to retailer product pages</li>
+                <li>Store traffic declining — need digital to compensate and drive hybrid shopping behavior</li>
+                <li>Product catalog with 10K–1M+ SKUs needs dynamic management</li>
+            </ul>
+            <div class="kpi-grid">
+                <div class="kpi-item">Omnichannel ROAS</div>
+                <div class="kpi-item">Store Visits (Modeled)</div>
+                <div class="kpi-item web-traffic">Website Revenue</div>
+                <div class="kpi-item">Cost Per Store Visit</div>
+                <div class="kpi-item web-traffic">Catalog Click-Through</div>
+                <div class="kpi-item">Incremental Lift</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-gtm">GTM Value Proposition</span>
+            <h3>Meta's Positioning for Retail</h3>
+            <ul>
+                <li><strong>"Omnichannel commerce at scale"</strong> — unify online and offline with a single campaign type</li>
+                <li>Collaborative Ads let brands co-fund traffic to retailer PDPs with shared catalog segments</li>
+                <li>Store traffic optimization targets users most likely to visit nearby locations</li>
+                <li>Holiday Playbook: 4-step framework (Build, Grow, Maximize, Sustain) for peak periods</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Web Traffic Angle:</strong> Meta's Omnichannel Ads optimize for both online purchases AND store visits simultaneously. For web-first retail, catalog ads drive traffic to category/product pages at scale with dynamic creative pulled from product feeds.
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-product">Key Product Capabilities</span>
+            <h3>Meta Products for Retail<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
+            <ul>
+                <li><strong>Omnichannel Ads:</strong> Single campaign optimizes for website purchases + in-store visits; requires Offline Conversions API</li>
+                <li><strong>Collaborative Ads:</strong> Brands share catalog segments with retailer partners; ads drive traffic to retailer's PDP with attribution back to brand</li>
+                <li><strong>Store Traffic Objective:</strong> Hyper-local targeting using device location signals; drives nearby shoppers to stores</li>
+                <li><strong>Advantage+ Catalog Ads:</strong> Dynamic creative from product feeds; auto-shows relevant products per user; deep-links to web PDPs</li>
+                <li><strong>Holiday Performance Playbook:</strong> 4-phase campaign framework with specific creative and bidding strategies per phase</li>
+                <li><strong>Conversions API for Offline Events:</strong> Upload POS data to match in-store purchases back to ad impressions</li>
+            </ul>
+        </div>
+
+            <!-- Meta Ads Manager: Full Traffic Campaign Creation Flow for Retail -->
+            <div class="ads-manager-flow" data-flow="retail">
+                <div class="flow-header">
+                    <div class="meta-logo">M</div>
+                    Meta Ads Manager — Traffic + Omnichannel Flow (Retail)
+                </div>
+                <div class="flow-source">Source: <a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager</a></div>
+                <div class="flow-tabs">
+                    <div class="flow-tab-btn flow-tab-active" data-flowtab="campaign">
+                        <span class="tab-num">1</span> Campaign
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="adset">
+                        <span class="tab-num">2</span> Ad Set
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="ad">
+                        <span class="tab-num">3</span> Ad
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel flow-panel-active" data-flowpanel="campaign">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Objective</div>
+                                <div class="flow-step-detail">Traffic for web visitors to store/category pages. Sales for omnichannel (web + store visits).</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Traffic</span>
+                                    <span class="flow-option">Sales (Omnichannel)</span>
+                                    <span class="flow-option dimmed">Awareness</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Budget & Buying Type</div>
+                                <div class="flow-step-detail">Auction with CBO. For seasonal promotions, consider burst budgets with end dates.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage Campaign Budget</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="adset">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Performance Goal</div>
+                                <div class="flow-step-detail">LPV for web shoppers. Store Visits for omnichannel campaigns.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option dimmed">Link Clicks</span>
+                                    <span class="flow-option selected">Landing Page Views</span>
+                                    <span class="flow-option">Store Visits (Omni)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Audience: Local + Shopping Intent</div>
+                                <div class="flow-step-detail">Geo-radius around stores + shopping behavior signals. Retarget website browsers.</div>
+                                <div class="flow-field"><span class="field-icon">📍</span> Location: 15mi radius of stores | Interests: Retail, Sales, Fashion</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🔄</span> Retarget: Site visitors (14 days, no purchase) + Lookalike 1-3%</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Placements</div>
+                                <div class="flow-step-detail">Advantage+ Placements. Reels performs well for retail visual merchandising.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Placements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="ad">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Ad Format</div>
+                                <div class="flow-step-detail">Dynamic Product Ads from catalog. Collection format for curated seasonal looks. Collaborative Ads for brand co-funding.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Dynamic Product Ads</span>
+                                    <span class="flow-option">Collection</span>
+                                    <span class="flow-option">Collaborative Ads</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Creative & Destination</div>
+                                <div class="flow-step-detail">Catalog-driven creative with pricing, availability. Link to category pages or individual PDPs.</div>
+                                <div class="flow-field"><span class="field-icon">🔗</span> URL: {product_url} → Category or PDP</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">👆</span> CTA: "Shop Now" | Deep Link: enabled</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Tracking: Pixel + CAPI + Offline</div>
+                                <div class="flow-step-detail">Full measurement: Pixel on web, CAPI server-side, Offline Conversions for in-store attribution.</div>
+                                <div class="flow-field"><span class="field-icon">📊</span> Online: Pixel + CAPI | Offline: Store visits + POS data upload</div>
+                                <div class="flow-note"><strong>Omnichannel:</strong> Upload weekly POS transaction data to match in-store sales back to ad exposure. Enables true omnichannel ROAS reporting.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="card">
+            <span class="card-label label-practice">Best Practices</span>
+            <h3>Web Traffic Optimization for Retail</h3>
+            <ul>
+                <li>Enable <strong>Omnichannel campaign type</strong> to let AI distribute budget between web conversions and store visits based on opportunity</li>
+                <li>Use Collaborative Ads to split funding with brand partners — drives traffic to your PDPs at shared cost</li>
+                <li>Product feed quality is everything: high-res images, accurate pricing, availability flags, and clean deep-links</li>
+                <li>Holiday strategy: Start broad (6-8 weeks out) with Traffic objective → switch to Conversions as event approaches</li>
+                <li>Use local inventory ads showing "In stock nearby" badges to drive urgency and both web + store traffic</li>
+                <li>Implement value-based optimization during peak: prioritize high-AOV purchasers over volume</li>
+            </ul>
+        </div>
+
+        <!-- TikTok Gap Analysis (Calibrated per TT Web Traffic Pitch Deck, Mar 2026) -->
+        <div class="card full-width-card">
+            <span class="card-label label-gap">TikTok Web Traffic Gap Analysis</span>
+            <h3>Areas for TikTok to Improve vs. Meta — Retail</h3>
+            <p style="font-size:0.78rem; color:#666; margin-bottom:12px; font-style:italic;">Note: TikTok already has LPV, Engaged Sessions, Multi-Link Ads (alpha), and full-funnel recipe support. Gaps below are Meta-only capabilities.</p>
+            <div class="gap-item">
+                <div class="gap-icon">1</div>
+                <div class="gap-content">
+                    <h4>No Omnichannel Campaign (Web + Store Joint Optimization)</h4>
+                    <p>Meta's Omnichannel Ads optimize for both online purchases and in-store visits simultaneously, delivering 51% higher ROAS vs. online-only campaigns (Target case study). TikTok cannot jointly optimize web traffic and offline store visits within a single campaign; there's no store-visit optimization goal.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Omnichannel Ads → joint web + store optimization → 51% ROAS lift vs. online-only</div>
+                    <div class="gap-tiktok-action">TikTok Action: Develop omnichannel campaign type; integrate offline store-visit signals from location data to enable web+store joint optimization</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">2</div>
+                <div class="gap-content">
+                    <h4>No Collaborative Ads (Brand-Funded Traffic to Retailer Sites)</h4>
+                    <p>Meta's Collaborative Ads enable brands to fund campaigns that drive traffic directly to retailer product pages (e.g., Target.com, Walmart.com) with shared ROAS attribution. TikTok lacks a co-funded framework where brand budgets drive traffic to retailer PDPs with split measurement between brand and retailer.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Collaborative Ads → brand funds traffic to retailer PDP → shared attribution and ROAS reporting</div>
+                    <div class="gap-tiktok-action">TikTok Action: Build collaborative ads framework; enable brand+retailer co-funded Traffic campaigns with split measurement (brand awareness + retailer conversion)</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">3</div>
+                <div class="gap-content">
+                    <h4>Limited Local Inventory Integration for Store Traffic</h4>
+                    <p>Meta integrates local product inventory feeds to show nearby store availability in ads, driving "see it online → buy in store" behavior with store locator overlays. TikTok's Multi-Link Ads (alpha) can link to store pages but lack real-time local inventory integration and proximity-based creative customization.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Local inventory ads show nearby stock + store locator → 3.2x in-store visit rate vs. generic ads</div>
+                    <div class="gap-tiktok-action">TikTok Action: Integrate local inventory feeds with Multi-Link Ads; add proximity-based creative variants showing nearest store availability</div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card full-width-card">
+            <span class="card-label label-case">Case Studies</span>
+            <h3>Representative Results</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:16px;">
+                <div class="case-study">
+                    <div class="case-brand">Target (US General Merchandise Retailer)</div>
+                    <p>Tested omnichannel ads on Facebook and Instagram, optimizing for both online sales and in-store traffic simultaneously. Integrated offline conversions data from POS systems.</p>
+                    <span class="case-result">51% higher ROAS with omnichannel ads vs. online-only optimization</span>
+                </div>
+                <div class="case-study">
+                    <div class="case-brand">Best Buy (Electronics Retail)</div>
+                    <p>Ovative's paid social strategy leveraged Advantage+ catalog ads with omnichannel optimization. Combined prospecting (new audience traffic to category pages) with retargeting (abandoned product viewers).</p>
+                    <span class="case-result">Significant omnichannel sales lift while reaching new audiences</span>
+                    <span class="case-result">Lower cost per incremental store visit vs. benchmark</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ CPG ============ -->
+<div class="tab-content" id="tab-cpg">
+<section class="industry-section" id="cpg">
+    <div class="industry-header">
+        <div class="industry-icon">📦</div>
+        <h2>Consumer Packaged Goods (CPG)</h2>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <span class="card-label label-needs">Industry Needs & Pain Points</span>
+            <h3>Client Challenges & KPIs</h3>
+            <ul>
+                <li>No direct purchase data — brands sell through retailers, making attribution extremely difficult</li>
+                <li>Low consideration category: impulse buys driven by awareness and availability, not research</li>
+                <li>Brand building is primary but hard to connect to short-term sales metrics</li>
+                <li>Need to drive trial/sampling, especially for new product launches</li>
+                <li>Shift to DTC channels and retail media creates need for web traffic to owned properties</li>
+                <li>Must demonstrate incrementality over baseline sales to justify ad spend</li>
+            </ul>
+            <div class="kpi-grid">
+                <div class="kpi-item">Brand Lift (Awareness)</div>
+                <div class="kpi-item">Ad Recall Lift</div>
+                <div class="kpi-item web-traffic">Website Visits (DTC)</div>
+                <div class="kpi-item web-traffic">Coupon/Sample Redemptions</div>
+                <div class="kpi-item">Incremental Sales Lift</div>
+                <div class="kpi-item">Reach & Frequency</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-gtm">GTM Value Proposition</span>
+            <h3>Meta's Positioning for CPG</h3>
+            <ul>
+                <li><strong>"Mass reach with precision"</strong> — combine TV-like reach with digital targeting for brand building</li>
+                <li>Measurement solutions (Brand Lift Studies, Conversion Lift, MMM integration) prove incrementality</li>
+                <li>Video-first formats (Reels, In-Stream) deliver brand storytelling at scale</li>
+                <li>Collaborative Ads enable CPGs to drive traffic directly to retailer product pages with full attribution</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Web Traffic Angle:</strong> CPG brands increasingly run Traffic campaigns to DTC sites (sampling, subscription, limited editions) and use Collaborative Ads to drive traffic to retailer PDPs (Amazon, Walmart, Target product pages) where purchase happens.
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-product">Key Product Capabilities</span>
+            <h3>Meta Products for CPG<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
+            <ul>
+                <li><strong>Reach & Frequency (Reservation):</strong> Guaranteed reach for brand launches with controlled frequency caps</li>
+                <li><strong>Collaborative Ads:</strong> CPG brands drive traffic to retailer PDPs; measure ROAS at retailer level</li>
+                <li><strong>Brand Lift Study:</strong> Measures incremental awareness, consideration, and purchase intent from ad exposure</li>
+                <li><strong>Conversion Lift Test:</strong> Randomized holdout test proving causal impact of ads on sales</li>
+                <li><strong>Reels & In-Stream Video:</strong> 15-30s brand storytelling; completion rates and ThruPlay metrics</li>
+                <li><strong>Traffic Objective (DTC):</strong> Drive to brand.com for sampling programs, limited editions, or DTC subscriptions</li>
+            </ul>
+        </div>
+
+            <!-- Meta Ads Manager: Full Traffic Campaign Creation Flow for CPG -->
+            <div class="ads-manager-flow" data-flow="cpg">
+                <div class="flow-header">
+                    <div class="meta-logo">M</div>
+                    Meta Ads Manager — Traffic + Collaborative Ads Flow (CPG)
+                </div>
+                <div class="flow-source">Source: <a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager</a></div>
+                <div class="flow-tabs">
+                    <div class="flow-tab-btn flow-tab-active" data-flowtab="campaign">
+                        <span class="tab-num">1</span> Campaign
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="adset">
+                        <span class="tab-num">2</span> Ad Set
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="ad">
+                        <span class="tab-num">3</span> Ad
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel flow-panel-active" data-flowpanel="campaign">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Objective: Traffic</div>
+                                <div class="flow-step-detail">Drive consumers to retailer PDPs or brand content hubs. Collaborative Ads supported under Traffic/Sales.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Traffic</span>
+                                    <span class="flow-option">Sales (Collaborative)</span>
+                                    <span class="flow-option dimmed">Awareness</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Budget & Structure</div>
+                                <div class="flow-step-detail">CBO recommended. Separate ad sets by retailer if running Collaborative Ads to multiple partners.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage Campaign Budget</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="adset">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Performance Goal: Landing Page Views</div>
+                                <div class="flow-step-detail">Optimize for users who load the retailer PDP or brand content page.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option dimmed">Link Clicks</span>
+                                    <span class="flow-option selected">Landing Page Views</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Collaborative Ads Partner Setup</div>
+                                <div class="flow-step-detail">Select retailer partner + catalog segment. Brand funds; retailer shares conversion data.</div>
+                                <div class="flow-field"><span class="field-icon">🤝</span> Partner: Walmart | Segment: Brand_SKUs_Q2</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🌐</span> Destination: walmart.com/product/{sku}</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Audience: Category Buyers</div>
+                                <div class="flow-step-detail">Broad targeting + category purchase behavior signals</div>
+                                <div class="flow-field"><span class="field-icon">👥</span> Advantage+ | Behaviors: Category buyers (Household) | Interest: Home & Garden</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="ad">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Ad Format & Creative</div>
+                                <div class="flow-step-detail">Video (brand storytelling/recipe) or Dynamic Ads from retailer catalog. UGC-style for authenticity.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Video (Brand Story)</span>
+                                    <span class="flow-option">Dynamic (Catalog)</span>
+                                    <span class="flow-option dimmed">Carousel</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">📝</span> Primary: Try our new {product}. Now available at {retailer}.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Destination & CTA</div>
+                                <div class="flow-step-detail">Link to retailer PDP or brand recipe/how-to page. Multi-link to offer retailer choice.</div>
+                                <div class="flow-field"><span class="field-icon">🔗</span> Primary: walmart.com/product | Alt: target.com/product</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">👆</span> CTA: "Shop Now" or "Learn More"</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Measurement Stack</div>
+                                <div class="flow-step-detail">Collaborative Ads ROAS (retailer data) + NCS Sales Lift + Brand Lift Study</div>
+                                <div class="flow-field"><span class="field-icon">📊</span> Collaborative ROAS | NCS Sales Lift | BLS (awareness/consideration)</div>
+                                <div class="flow-note"><strong>CPG Measurement:</strong> NCS/Circana measures offline sales lift from digital Traffic campaigns — proving in-store impact of web traffic spend to CMO.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="card">
+            <span class="card-label label-practice">Best Practices</span>
+            <h3>Web Traffic Optimization for CPG</h3>
+            <ul>
+                <li>Use <strong>Collaborative Ads</strong> to drive retailer-attributed web traffic — align catalog segments with in-stock products at retail partners</li>
+                <li>For DTC traffic: optimize for Landing Page View + lead capture (email/sample sign-up) as conversion event</li>
+                <li>Video creative: Hook in first 2 seconds; brand in first 3 seconds; keep under 15s for Reels; show product usage</li>
+                <li>Layer brand campaigns (Reach objective) with performance campaigns (Traffic/Conversions) for full-funnel</li>
+                <li>Run Brand Lift Studies alongside Traffic campaigns to prove the awareness → site visit → purchase chain</li>
+                <li>Use seasonal moments (back-to-school, holidays) to spike Traffic campaigns to coupon/promo landing pages</li>
+            </ul>
+        </div>
+
+        <!-- TikTok Gap Analysis (Calibrated per TT Web Traffic Pitch Deck, Mar 2026) -->
+        <div class="card full-width-card">
+            <span class="card-label label-gap">TikTok Web Traffic Gap Analysis</span>
+            <h3>Areas for TikTok to Improve vs. Meta — CPG</h3>
+            <p style="font-size:0.78rem; color:#666; margin-bottom:12px; font-style:italic;">Note: TikTok has LPV, Engaged Sessions, Multi-Link Ads (alpha for multi-retailer), and Assisted Conversion metrics. Gaps below are Meta-only capabilities.</p>
+            <div class="gap-item">
+                <div class="gap-icon">1</div>
+                <div class="gap-content">
+                    <h4>No Collaborative Ads for CPG → Retailer PDP Attribution</h4>
+                    <p>Meta's Collaborative Ads enable CPG brands to drive traffic to retailer PDPs (Walmart, Target, Amazon) with full-path ROAS attribution back to the brand. TikTok's Multi-Link Ads (alpha) link to multiple retailer destinations but lack retailer-side conversion data sharing and co-funded attribution models.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Collaborative Ads → CPG brand funds, retailer shares conversion data → full-path purchase ROAS for CPG CMO</div>
+                    <div class="gap-tiktok-action">TikTok Action: Establish retailer data partnerships (similar to Meta's Collaborative Ads); enable Multi-Link Ads to receive retailer conversion signals for brand-level ROAS</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">2</div>
+                <div class="gap-content">
+                    <h4>Offline Sales Lift Measurement Gap</h4>
+                    <p>Meta partners with NCS (NielsenIQ) and Circana to measure incremental offline sales lift from digital Traffic campaigns — critical for CPG where 85%+ of sales happen in-store. TikTok offers NCS Sales Lift Studies but integration with web traffic campaigns specifically (attributing online ad views to offline purchases) is less mature.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: NCS/Circana Sales Lift tied to Traffic campaign exposure → proves offline sales impact to justify web traffic spend</div>
+                    <div class="gap-tiktok-action">TikTok Action: Deepen NCS/Circana integration to attribute offline sales lift specifically to Traffic (LPV/ES) campaigns; build CPG-specific reporting that connects web engagement to store purchases</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">3</div>
+                <div class="gap-content">
+                    <h4>Brand Lift + Web Traffic Unified Reporting</h4>
+                    <p>Meta correlates Brand Lift Study (BLS) results with Traffic campaign KPIs in a unified dashboard — showing CMOs how awareness lifts translate into site visits and downstream purchases. TikTok's BLS and Traffic reporting exist in separate interfaces with no causal linkage.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: BLS correlated with Traffic data → "10pt awareness lift drove 42% more site visits" narrative for CMO</div>
+                    <div class="gap-tiktok-action">TikTok Action: Integrate BLS outputs with Assisted Conversion and Traffic KPI reporting; build unified CPG performance dashboard showing awareness → web traffic → purchase pathway</div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card full-width-card">
+            <span class="card-label label-case">Case Studies</span>
+            <h3>Representative Results</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:16px;">
+                <div class="case-study">
+                    <div class="case-brand">Global Beverage Brand (Collaborative Ads + Retailer)</div>
+                    <p>Used Meta Collaborative Ads to drive traffic from Meta platforms directly to retailer product detail pages. Shared catalog segments with 3 major retail partners. Measured full-path ROAS from ad click to retailer purchase.</p>
+                    <span class="case-result">3.5x ROAS on Collaborative Ads</span>
+                    <span class="case-result">28% increase in attributed retailer web traffic</span>
+                </div>
+                <div class="case-study">
+                    <div class="case-brand">Personal Care Brand (DTC Sampling Program)</div>
+                    <p>Ran Traffic objective campaigns driving to sampling landing page. Used Lead Ads as alternate path. Retargeted sample recipients with Conversions campaigns to DTC subscription page.</p>
+                    <span class="case-result">$0.42 cost per landing page view</span>
+                    <span class="case-result">18% sample-to-subscription conversion rate</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ ENTERTAINMENT & MEDIA ============ -->
+<div class="tab-content" id="tab-entertainment">
+<section class="industry-section" id="entertainment">
+    <div class="industry-header">
+        <div class="industry-icon">🎬</div>
+        <h2>Entertainment & Media</h2>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <span class="card-label label-needs">Industry Needs & Pain Points</span>
+            <h3>Client Challenges & KPIs</h3>
+            <ul>
+                <li>Tight launch windows: movies/shows have days-to-weeks to capture audience attention</li>
+                <li>Streaming wars: subscriber acquisition costs rising; need to drive sign-ups and trial activations</li>
+                <li>Content discovery is fragmented — users overwhelmed by choice across platforms</li>
+                <li>Driving ticket sales (theatrical) or streaming sign-ups requires urgency and social proof</li>
+                <li>Music/live events need rapid awareness scaling and ticket page traffic</li>
+                <li>Measuring "watch intent" vs. actual viewing/subscription is complex</li>
+            </ul>
+            <div class="kpi-grid">
+                <div class="kpi-item">Subscriber Acquisitions</div>
+                <div class="kpi-item">Cost Per Sign-Up</div>
+                <div class="kpi-item web-traffic">Ticket Page Visits</div>
+                <div class="kpi-item">Trailer Views (ThruPlay)</div>
+                <div class="kpi-item web-traffic">Landing Page CTR</div>
+                <div class="kpi-item">App Installs</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-gtm">GTM Value Proposition</span>
+            <h3>Meta's Positioning for Entertainment</h3>
+            <ul>
+                <li><strong>"Inspire at-home audiences & in-person attendees"</strong> — immersive video formats native to how people discover content</li>
+                <li>Massive scale: reach 3B+ users across Meta apps for awareness blitzes around launches</li>
+                <li>Social amplification: user sharing and engagement creates organic reach multiplier</li>
+                <li>Precision targeting: reach genre fans, lookalikes of existing subscribers, lapsed users</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Web Traffic Angle:</strong> Entertainment clients use Traffic campaigns to drive users to ticket purchase pages, streaming sign-up flows, and content landing pages (trailers, show pages). High urgency + time-sensitivity makes landing page optimization critical.
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-product">Key Product Capabilities</span>
+            <h3>Meta Products for Entertainment<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
+            <ul>
+                <li><strong>Video Ads (In-Stream, Reels, Stories):</strong> Trailer distribution at scale; ThruPlay optimization ensures qualified views</li>
+                <li><strong>Advantage+ App Campaigns:</strong> For streaming apps — automated install + subscription optimization</li>
+                <li><strong>Traffic Objective → Ticket/Sign-up Pages:</strong> Landing Page View optimization for theatrical releases and event tickets</li>
+                <li><strong>Reach & Frequency (Reservation):</strong> Guaranteed reach for opening weekend blitzes with controlled pacing</li>
+                <li><strong>Event Ads:</strong> Drive RSVPs and ticket page visits for live events, concerts, premieres</li>
+                <li><strong>Engagement Custom Audiences:</strong> Retarget users who watched 75%+ of trailer with conversion-focused ads to purchase page</li>
+            </ul>
+        </div>
+
+            <!-- Meta Ads Manager: Full Traffic Campaign Creation Flow for Entertainment -->
+            <div class="ads-manager-flow" data-flow="ent">
+                <div class="flow-header">
+                    <div class="meta-logo">M</div>
+                    Meta Ads Manager — Traffic Campaign Flow (Entertainment & Media)
+                </div>
+                <div class="flow-source">Source: <a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager</a></div>
+                <div class="flow-tabs">
+                    <div class="flow-tab-btn flow-tab-active" data-flowtab="campaign">
+                        <span class="tab-num">1</span> Campaign
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="adset">
+                        <span class="tab-num">2</span> Ad Set
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="ad">
+                        <span class="tab-num">3</span> Ad
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel flow-panel-active" data-flowpanel="campaign">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Objective: Traffic</div>
+                                <div class="flow-step-detail">Drive to ticket pages, streaming sign-ups, or trailer pages. Pre-launch: Awareness + ThruPlay first, then retarget with Traffic.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option">Awareness (pre-launch)</span>
+                                    <span class="flow-option selected">Traffic (ticket/stream)</span>
+                                    <span class="flow-option dimmed">Sales</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Buying Type</div>
+                                <div class="flow-step-detail">Auction for always-on. Reservation for premiere windows with guaranteed reach/frequency.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Auction</span>
+                                    <span class="flow-option">Reservation (premiere)</span>
+                                </div>
+                                <div class="flow-note"><strong>Reservation:</strong> Guarantees reach within a date window. Ideal for movie launches, album drops. Set frequency cap (3x/week) and peak delivery date.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="adset">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Performance Goal</div>
+                                <div class="flow-step-detail">LPV for ticket/streaming pages (quality). Link Clicks for maximum trailer page volume.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option">Link Clicks (volume)</span>
+                                    <span class="flow-option selected">Landing Page Views (quality)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Audience: Sequential Funnel</div>
+                                <div class="flow-step-detail">Retarget ThruPlay audience (watched 75%+ of trailer) with Traffic ads to ticket page. Expand with Lookalike.</div>
+                                <div class="flow-field"><span class="field-icon">🎬</span> Custom: Video viewers (75%+ of trailer, 30 days)</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">👥</span> Lookalike: 1-3% of ticket purchasers</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🎯</span> Interest: Movies, Streaming, Genre-specific (Horror, Sci-Fi, etc.)</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Placements & Scheduling</div>
+                                <div class="flow-step-detail">Reels + Stories for immersive trailer content. Schedule ramp-up 2 weeks pre-release.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Placements (Reels-heavy)</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">📅</span> Ramp: 14 days pre-release → peak on launch day → taper over 7 days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="ad">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Ad Format</div>
+                                <div class="flow-step-detail">Video ads (trailers, BTS). Carousel for cast/episode showcase. Event Ads for RSVP capture.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Video (Trailer/BTS)</span>
+                                    <span class="flow-option">Carousel (Cast)</span>
+                                    <span class="flow-option">Event Ad (RSVP)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Creative & Copy</div>
+                                <div class="flow-step-detail">Hook in first 3 seconds. Countdown urgency for limited screenings. Star/creator CTAs.</div>
+                                <div class="flow-field"><span class="field-icon">✏️</span> Headline: {Movie Title} — In Theaters {Release Date}</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📝</span> Primary: Don't miss the #1 movie of the year. Get tickets now before they sell out.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Destination & Tracking</div>
+                                <div class="flow-step-detail">Ticket purchase page or streaming sign-up. Track event responses and purchase conversions.</div>
+                                <div class="flow-field"><span class="field-icon">🔗</span> URL: ticketmaster.com/event/{id} or streamer.com/subscribe</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📊</span> Pixel: ViewContent → InitiateCheckout → Purchase | CAPI for subscription events</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">👆</span> CTA: "Get Tickets" or "Subscribe Now"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="card">
+            <span class="card-label label-practice">Best Practices</span>
+            <h3>Web Traffic Optimization for Entertainment</h3>
+            <ul>
+                <li>Phase campaigns: <strong>Awareness (video views)</strong> → <strong>Consideration (traffic to content page)</strong> → <strong>Conversion (sign-up/ticket purchase)</strong></li>
+                <li>Use ThruPlay video audiences (watched 50%+) as retargeting pool for Traffic/Conversion campaigns to sign-up pages</li>
+                <li>Countdown urgency: "Opens Friday" or "Last chance" messaging in creative boosts CTR to ticket pages</li>
+                <li>Reels-native creative (vertical, fast cuts, caption overlays) outperforms repurposed TV spots by 2-3x on CTR</li>
+                <li>For streaming: optimize for Trial Start or Subscription event via CAPI, not just Landing Page View</li>
+                <li>Leverage social proof: show engagement counts, reviews, or "Trending Now" signals in ad creative</li>
+            </ul>
+        </div>
+
+        <!-- TikTok Gap Analysis (Calibrated per TT Web Traffic Pitch Deck, Mar 2026) -->
+        <div class="card full-width-card">
+            <span class="card-label label-gap">TikTok Web Traffic Gap Analysis</span>
+            <h3>Areas for TikTok to Improve vs. Meta — Entertainment & Media</h3>
+            <p style="font-size:0.78rem; color:#666; margin-bottom:12px; font-style:italic;">Note: TikTok has LPV, Engaged Sessions, Consideration Ads signal (beta), and Assisted Conversion metrics for full-funnel. Gaps below are Meta-only.</p>
+            <div class="gap-item">
+                <div class="gap-icon">1</div>
+                <div class="gap-content">
+                    <h4>No Sequential Funnel Automation (Video Viewers → Traffic Retarget)</h4>
+                    <p>Meta's ThruPlay audience automatically pools qualified video viewers (watched 15s+) and enables one-click retargeting with Traffic objective to ticket/streaming purchase pages — achieving 4.2x higher visit rate. TikTok requires manual audience building from video view events; there's no automated "viewers → traffic campaign" sequential setup.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: ThruPlay → auto-retarget pool → Traffic to purchase page (one-click sequential setup) → 4.2x visit rate</div>
+                    <div class="gap-tiktok-action">TikTok Action: Build "Video Viewers → Traffic Campaign" automation; leverage Consideration Ads signal to auto-create mid-funnel retargeting pools from 15s Focused View campaigns</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">2</div>
+                <div class="gap-content">
+                    <h4>No Reach & Frequency Reservation for Time-Sensitive Launches</h4>
+                    <p>Entertainment launches (movie premieres, album drops, season releases) need guaranteed delivery within narrow windows. Meta offers Reservation buying with guaranteed reach/frequency caps and pacing tied to specific dates. TikTok's Traffic campaigns use auction only — no guaranteed delivery for high-priority launch windows.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Reservation buying → guaranteed reach/frequency caps → paced delivery for release date windows</div>
+                    <div class="gap-tiktok-action">TikTok Action: Offer Reach & Frequency reservation buying combinable with Traffic objectives; add date-based pacing guarantees for entertainment launch campaigns</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">3</div>
+                <div class="gap-content">
+                    <h4>Limited Event/Premiere RSVP Integration with Traffic</h4>
+                    <p>Meta's Event Ads integrate with Facebook Events, enabling RSVP tracking and automatic Traffic campaign retargeting of event respondents with ticket purchase links. TikTok lacks native event RSVP functionality connected to Traffic campaigns for driving ticket sales post-interest.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Event Ads → RSVP tracking → auto-retarget RSVPs with Traffic to ticket page → 2.8x conversion rate</div>
+                    <div class="gap-tiktok-action">TikTok Action: Build event/premiere interest capture within ad units; connect interest signals to Traffic campaign retargeting for ticket/subscription conversion</div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card full-width-card">
+            <span class="card-label label-case">Case Studies</span>
+            <h3>Representative Results</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:16px;">
+                <div class="case-study">
+                    <div class="case-brand">Streaming Platform (Subscriber Acquisition)</div>
+                    <p>Used Advantage+ App Campaign combined with web Traffic campaigns to sign-up page. Value-based optimization prioritized high-LTV subscribers. Excluded existing users and targeted lookalikes of binge-watchers.</p>
+                    <span class="case-result">30% decrease in cost per subscriber</span>
+                    <span class="case-result">106% increase in sign-ups</span>
+                </div>
+                <div class="case-study">
+                    <div class="case-brand">Major Film Studio (Theatrical Release)</div>
+                    <p>3-phase campaign: 1) Reach & Frequency for trailer distribution (ThruPlay), 2) Traffic objective driving to ticket purchase page for trailer viewers, 3) Retargeting page visitors with showtime/location creative.</p>
+                    <span class="case-result">4.2x higher ticket page visit rate from retargeted trailer viewers</span>
+                    <span class="case-result">22% lower cost per ticket page visit vs. benchmark</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ PROFESSIONAL SERVICES ============ -->
+<div class="tab-content" id="tab-professional">
+<section class="industry-section" id="professional">
+    <div class="industry-header">
+        <div class="industry-icon">💼</div>
+        <h2>Professional Services</h2>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <span class="card-label label-needs">Industry Needs & Pain Points</span>
+            <h3>Client Challenges & KPIs</h3>
+            <ul>
+                <li>Long sales cycles (weeks to months) — need multi-touch nurturing, not single-click conversion</li>
+                <li>High-value contracts mean each lead is critical — quality over quantity</li>
+                <li>Decision-makers harder to reach on social vs. search — need to prove Meta works for B2B/services</li>
+                <li>Content-heavy buying journey: prospects need whitepapers, case studies, consultations before committing</li>
+                <li>Lead qualification is essential — raw lead volume without quality wastes sales team capacity</li>
+                <li>Skepticism that Meta/Facebook is a "B2C platform" — must demonstrate professional targeting capability</li>
+            </ul>
+            <div class="kpi-grid">
+                <div class="kpi-item">Cost Per Qualified Lead</div>
+                <div class="kpi-item">Lead-to-Opportunity Rate</div>
+                <div class="kpi-item web-traffic">Landing Page Conv. Rate</div>
+                <div class="kpi-item web-traffic">Content Downloads</div>
+                <div class="kpi-item web-traffic">Consultation Bookings</div>
+                <div class="kpi-item">Pipeline Value</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-gtm">GTM Value Proposition</span>
+            <h3>Meta's Positioning for Professional Services</h3>
+            <ul>
+                <li><strong>"Reach decision-makers where they spend leisure time"</strong> — 48.5% of B2B buyers use Facebook for research</li>
+                <li>60-70% lower CPL than Google Search for initial lead capture (though quality requires optimization)</li>
+                <li>Full-funnel lead nurturing: Awareness content → Gated asset traffic → Lead form → Retargeting to consultation</li>
+                <li>Conversions API + CRM integration enables lead quality scoring and downstream optimization</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Web Traffic Angle:</strong> Professional services heavily rely on driving quality traffic to content landing pages (whitepapers, case studies, webinar sign-ups) as the top-of-funnel entry point. Meta's Traffic objective with Landing Page View optimization is the primary vehicle, with retargeting converting page visitors into leads.
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-product">Key Product Capabilities</span>
+            <h3>Meta Products for Professional Services<span class="web-traffic-tag">🌐 Web Traffic</span></h3>
+            <ul>
+                <li><strong>Lead Ads (Instant Forms):</strong> Native lead capture without leaving the platform; higher-intent forms with conditional questions for qualification</li>
+                <li><strong>Traffic Objective → Content Landing Pages:</strong> Drive to gated assets, case studies, consultation booking pages</li>
+                <li><strong>Conversions API + CRM Integration:</strong> Pass back qualified lead/opportunity stages for downstream optimization</li>
+                <li><strong>Custom Audiences from Website:</strong> Retarget content page visitors with deeper-funnel offers</li>
+                <li><strong>Lookalike Audiences from Customer Lists:</strong> Upload best client lists to find similar decision-makers</li>
+                <li><strong>Click-to-Messenger/WhatsApp:</strong> Direct conversation for high-touch service inquiries</li>
+            </ul>
+        </div>
+
+            <!-- Meta Ads Manager: Full Traffic Campaign Creation Flow for Professional Services -->
+            <div class="ads-manager-flow" data-flow="prof">
+                <div class="flow-header">
+                    <div class="meta-logo">M</div>
+                    Meta Ads Manager — Traffic Campaign Flow (Professional Services / B2B)
+                </div>
+                <div class="flow-source">Source: <a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager</a></div>
+                <div class="flow-tabs">
+                    <div class="flow-tab-btn flow-tab-active" data-flowtab="campaign">
+                        <span class="tab-num">1</span> Campaign
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="adset">
+                        <span class="tab-num">2</span> Ad Set
+                    </div>
+                    <div class="flow-tab-btn" data-flowtab="ad">
+                        <span class="tab-num">3</span> Ad
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel flow-panel-active" data-flowpanel="campaign">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Campaign Objective: Traffic (or Leads)</div>
+                                <div class="flow-step-detail">Traffic to drive prospects to whitepapers, webinars, case studies, or demo booking pages. Leads for instant form capture.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Traffic</span>
+                                    <span class="flow-option">Leads (Instant Form)</span>
+                                    <span class="flow-option dimmed">Awareness</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Budget & Schedule</div>
+                                <div class="flow-step-detail">B2B: lower daily budgets, longer learning phases. Run 2+ weeks minimum for algorithm learning.</div>
+                                <div class="flow-field"><span class="field-icon">💰</span> Daily Budget: $200-500 | Schedule: Weekdays only (business hours optional)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="adset">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Performance Goal: Landing Page Views</div>
+                                <div class="flow-step-detail">Optimize for prospects who load gated content or booking pages. Filters casual browsers.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option dimmed">Link Clicks</span>
+                                    <span class="flow-option selected">Landing Page Views</span>
+                                </div>
+                                <div class="flow-note"><strong>B2B Tip:</strong> LPV is critical — every non-loading click is wasted budget on a non-qualified visitor. B2B landing pages (demo forms, consultation) are the primary conversion step.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Audience: Professional Targeting</div>
+                                <div class="flow-step-detail">Meta's B2B targeting: Job titles, industry, company size, seniority. Layer with CRM Lookalike.</div>
+                                <div class="flow-field"><span class="field-icon">💼</span> Job Title: CFO, VP Finance, Controller | Industry: SaaS, FinTech</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🏢</span> Company Size: 50-500 employees | Seniority: Manager+</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">👥</span> Lookalike: 1% of CRM customer list (matched via email)</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Placements</div>
+                                <div class="flow-step-detail">Feed + Instagram perform best for B2B decision-makers. LinkedIn-like targeting within Meta ecosystem.</div>
+                                <div class="flow-toggle-row">
+                                    <div class="flow-toggle"></div>
+                                    <span style="font-weight:600;">Advantage+ Placements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-tab-panel" data-flowpanel="ad">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-num">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Ad Format & Creative</div>
+                                <div class="flow-step-detail">Single image/video with clear value prop + gated content CTA. Carousel for multi-service showcase.</div>
+                                <div class="flow-option-row">
+                                    <span class="flow-option selected">Single Image/Video</span>
+                                    <span class="flow-option">Carousel (Services)</span>
+                                    <span class="flow-option">Lead Form (Instant)</span>
+                                </div>
+                                <div class="flow-field" style="margin-top:6px;"><span class="field-icon">✏️</span> Headline: Free 2026 CFO Playbook — Download Now</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">📝</span> Primary: Join 500+ finance leaders who reduced close time by 40%. Get the guide.</div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Destination URL</div>
+                                <div class="flow-step-detail">Whitepaper download, webinar registration, or demo booking page with lead form.</div>
+                                <div class="flow-field"><span class="field-icon">🔗</span> URL: company.com/whitepaper or company.com/book-demo</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">👆</span> CTA: "Download" or "Book a Demo" <span class="field-dropdown">▼</span></div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Tracking: CAPI with CRM Pipeline Stages</div>
+                                <div class="flow-step-detail">Pass multi-stage events: Lead → MQL → SQL → Opportunity → Closed Won. Optimize toward SQLs, not raw fills.</div>
+                                <div class="flow-field"><span class="field-icon">📊</span> CAPI Events: Lead → MQL → SQL → Opportunity → Closed Won</div>
+                                <div class="flow-field" style="margin-top:4px;"><span class="field-icon">🎯</span> Optimize for: Qualified Leads (SQL) — not raw form submissions</div>
+                                <div class="flow-note"><strong>Multi-Stage:</strong> Passing CRM stages back via CAPI teaches Meta's algorithm which users become SQLs. Raises lead-to-SQL rate from ~12% to ~28%.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="card">
+            <span class="card-label label-practice">Best Practices</span>
+            <h3>Web Traffic Optimization for Professional Services</h3>
+            <ul>
+                <li>Use <strong>Landing Page View optimization</strong> (not Link Clicks) to find users who fully load your content pages — reduces wasted spend on accidental clicks</li>
+                <li>Create sequential funnel: Traffic to blog/content → Retarget readers with gated asset (Lead Ad) → Retarget leads with consultation CTA</li>
+                <li>Lead form design: Add 2-3 qualifying questions (company size, budget, timeline) to filter unqualified leads before they reach sales</li>
+                <li>Integrate CAPI to pass back CRM stages (SQL, Opportunity, Closed-Won) — enables optimization toward pipeline value, not just raw leads</li>
+                <li>Creative: Authority-driven (testimonials, credentials, data points); professional but not corporate; video testimonials outperform static</li>
+                <li>Audience: Start with Customer List lookalikes + job title/industry interests; use broad only when pixel has 500+ conversion events</li>
+            </ul>
+        </div>
+
+        <!-- TikTok Gap Analysis (Calibrated per TT Web Traffic Pitch Deck, Mar 2026) -->
+        <div class="card full-width-card">
+            <span class="card-label label-gap">TikTok Web Traffic Gap Analysis</span>
+            <h3>Areas for TikTok to Improve vs. Meta — Professional Services</h3>
+            <p style="font-size:0.78rem; color:#666; margin-bottom:12px; font-style:italic;">Note: TikTok has LPV, Engaged Sessions (ideal for gated content), and Assisted Conversion for multi-touch B2B journeys. Gaps below are Meta-only.</p>
+            <div class="gap-item">
+                <div class="gap-icon">1</div>
+                <div class="gap-content">
+                    <h4>No Multi-Stage Conversion Optimization (Lead → MQL → SQL)</h4>
+                    <p>Meta's CAPI allows advertisers to pass CRM pipeline stages back (Lead → MQL → SQL → Opportunity → Closed Won) and optimize delivery toward downstream qualified stages, not just raw form fills. TikTok's Events API supports single conversion events; there's no multi-stage funnel optimization where Traffic campaigns target users most likely to become SQLs.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: CAPI multi-stage events → optimize toward Qualified Leads → 2.3x SQL rate vs. optimizing for raw leads</div>
+                    <div class="gap-tiktok-action">TikTok Action: Enable multi-stage conversion events in Events API (Lead→MQL→SQL→Opp); allow Traffic campaign optimization toward downstream pipeline stages</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">2</div>
+                <div class="gap-content">
+                    <h4>Limited B2B Professional Targeting Dimensions</h4>
+                    <p>Meta offers job title, industry, company size, seniority level, and decision-maker targeting for B2B campaigns. TikTok's interest/behavior targeting lacks professional dimensions — making it harder to reach B2B decision-makers with web traffic campaigns driving them to whitepapers, webinars, or demo pages.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Professional targeting (job title + seniority + company size + industry) → precise B2B decision-maker reach</div>
+                    <div class="gap-tiktok-action">TikTok Action: Expand professional interest/behavior targeting categories; consider B2B data partnerships for decision-maker segments; leverage Engaged Sessions to qualify professional intent</div>
+                </div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-icon">3</div>
+                <div class="gap-content">
+                    <h4>No Instant Form with Conditional Logic (Lead Qualification Pre-Submit)</h4>
+                    <p>Meta's Instant Forms support conditional branching — asking qualifying questions that filter low-quality leads before submission, increasing lead-to-SQL rate from 12% to 28%. TikTok's lead forms are linear; there's no conditional logic to pre-qualify leads or route them to different landing pages based on responses.</p>
+                    <div class="gap-meta-advantage">Meta Advantage: Instant Forms with conditional logic → pre-qualification → 28% lead-to-SQL rate (vs. 12% without)</div>
+                    <div class="gap-tiktok-action">TikTok Action: Add conditional form logic; enable qualification routing (high-intent → demo page via Traffic, low-intent → nurture content); combine with Engaged Sessions for deeper qualification</div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card full-width-card">
+            <span class="card-label label-case">Case Studies</span>
+            <h3>Representative Results</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:16px;">
+                <div class="case-study">
+                    <div class="case-brand">B2B SaaS Company (Lead Generation)</div>
+                    <p>Used Traffic campaigns driving to whitepaper landing pages (Landing Page View optimization). Retargeted page visitors with Lead Ads containing qualification questions. CAPI integration passed back SQL events for optimization.</p>
+                    <span class="case-result">60% lower CPL vs. Google Ads</span>
+                    <span class="case-result">Lead-to-SQL rate improved from 12% to 28% with qualifying forms</span>
+                </div>
+                <div class="case-study">
+                    <div class="case-brand">Financial Advisory Firm (Consultation Bookings)</div>
+                    <p>Video testimonial ads (Reels) → Traffic to consultation booking page. Used Lookalike from existing HNW client list. Click-to-WhatsApp as alternative path for prospects preferring direct conversation.</p>
+                    <span class="case-result">$23 cost per consultation booking</span>
+                    <span class="case-result">3.2x pipeline value vs. ad spend within 90 days</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ CROSS-INDUSTRY SUMMARY ============ -->
+<div class="tab-content" id="tab-summary">
+<section class="industry-section" id="summary">
+    <div class="industry-header">
+        <div class="industry-icon">📊</div>
+        <h2>Cross-Industry Web Traffic Patterns</h2>
+    </div>
+    <div class="cards-grid">
+        <div class="card full-width-card">
+            <span class="card-label label-gtm">Strategic Insights for Competitive Positioning</span>
+            <h3>How Meta Positions Web Traffic Across Verticals</h3>
+            <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; font-size:0.85rem; margin-top:12px;">
+                    <thead>
+                        <tr style="background:var(--primary); color:white;">
+                            <th style="padding:12px; text-align:left; border-radius:8px 0 0 0;">Vertical</th>
+                            <th style="padding:12px; text-align:left;">Primary Traffic Objective</th>
+                            <th style="padding:12px; text-align:left;">Key Landing Destination</th>
+                            <th style="padding:12px; text-align:left;">Hero Product</th>
+                            <th style="padding:12px; text-align:left; border-radius:0 8px 0 0;">Web Traffic KPI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid var(--gray-200);">
+                            <td style="padding:10px; font-weight:700;">Automotive</td>
+                            <td style="padding:10px;">Landing Page View → VDP</td>
+                            <td style="padding:10px;">Vehicle Detail Pages / Configurator</td>
+                            <td style="padding:10px;">Automotive Inventory Ads (AIA)</td>
+                            <td style="padding:10px;">Cost Per VDP View</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--gray-200); background:#f9f9f9;">
+                            <td style="padding:10px; font-weight:700;">Travel</td>
+                            <td style="padding:10px;">Landing Page View → Booking Engine</td>
+                            <td style="padding:10px;">Search Results / Booking Page</td>
+                            <td style="padding:10px;">Dynamic Ads for Travel (DAT)</td>
+                            <td style="padding:10px;">Cost Per Booking Session</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--gray-200);">
+                            <td style="padding:10px; font-weight:700;">E-commerce</td>
+                            <td style="padding:10px;">Purchase (Web) via ASC</td>
+                            <td style="padding:10px;">Product Detail Pages / Collections</td>
+                            <td style="padding:10px;">Advantage+ Sales Campaigns</td>
+                            <td style="padding:10px;">ROAS / Cost Per Purchase</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--gray-200); background:#f9f9f9;">
+                            <td style="padding:10px; font-weight:700;">Retail</td>
+                            <td style="padding:10px;">Omnichannel (Web + Store)</td>
+                            <td style="padding:10px;">Retailer PDPs / Store Locator</td>
+                            <td style="padding:10px;">Omnichannel Ads + Collaborative Ads</td>
+                            <td style="padding:10px;">Omnichannel ROAS</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--gray-200);">
+                            <td style="padding:10px; font-weight:700;">CPG</td>
+                            <td style="padding:10px;">Traffic to Retailer PDP / DTC</td>
+                            <td style="padding:10px;">Retailer Product Pages / Sample Pages</td>
+                            <td style="padding:10px;">Collaborative Ads + Reach & Frequency</td>
+                            <td style="padding:10px;">Retailer Traffic Volume</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--gray-200); background:#f9f9f9;">
+                            <td style="padding:10px; font-weight:700;">Entertainment</td>
+                            <td style="padding:10px;">Traffic → Ticket/Sign-up Page</td>
+                            <td style="padding:10px;">Ticket Purchase / Subscription Page</td>
+                            <td style="padding:10px;">Video Ads + Reach & Frequency</td>
+                            <td style="padding:10px;">Cost Per Page Visit</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:700;">Professional Services</td>
+                            <td style="padding:10px;">Landing Page View → Content</td>
+                            <td style="padding:10px;">Whitepaper / Consultation Booking</td>
+                            <td style="padding:10px;">Lead Ads + Traffic Objective</td>
+                            <td style="padding:10px;">Cost Per Qualified Lead</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-product">Common Meta Web Traffic Stack</span>
+            <h3>Universal Product Capabilities</h3>
+            <ul>
+                <li><strong>Landing Page View Optimization:</strong> Used across ALL verticals as the primary web traffic objective (filters out bounces)</li>
+                <li><strong>Conversions API (CAPI):</strong> Server-side signal for accurate attribution; enables optimization toward downstream events</li>
+                <li><strong>Advantage+ Placements:</strong> AI auto-distributes across all surfaces (Feed, Stories, Reels, Audience Network, Messenger)</li>
+                <li><strong>Dynamic/Catalog Ads:</strong> Auto-personalized creative from product feeds with deep links to specific web pages</li>
+                <li><strong>Retargeting (Website Custom Audiences):</strong> Sequential funnel — bring visitors back to complete desired action</li>
+                <li><strong>Reels Ads:</strong> Highest engagement format; native creative outperforms repurposed assets 2-3x on CTR</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <span class="card-label label-practice">Key Takeaways for TikTok Web Traffic</span>
+            <h3>Competitive Implications</h3>
+            <ul>
+                <li><strong>Landing Page View optimization</strong> is Meta's differentiator — they filter for actual page loads, not just clicks</li>
+                <li><strong>Catalog/Feed integration</strong> is deep across all verticals — dynamic ads auto-generate from product data with deep links</li>
+                <li><strong>CAPI is mandatory</strong> for serious advertisers — server-side signal closes the iOS privacy gap</li>
+                <li><strong>Advantage+ automation</strong> removes manual complexity — one campaign type handles audience, placement, creative</li>
+                <li><strong>Full-funnel sequencing</strong> is standard playbook: Video/Reach → Traffic → Conversions (not standalone campaigns)</li>
+                <li><strong>Creative diversity = targeting</strong> in 2025/26 — algorithm uses creative signals to find right audiences</li>
+                <li><strong>Omnichannel measurement</strong> (web + offline) is key selling point for retail/auto verticals</li>
+            </ul>
+        </div>
+    </div>
+</section>
+</div>
+
+</div>
+
+<!-- Appendix: Sources -->
+<div class="container" style="margin-top:40px;">
+    <div class="card full-width-card" style="background:#f8f9fb;">
+        <h2 style="font-size:1.2rem; margin-bottom:16px; color:#1a1a1a; border-bottom: 2px solid #e4e6eb; padding-bottom:10px;">Appendix: Data Sources & References</h2>
+
+        <h3 style="font-size:0.95rem; color:#1877F2; margin-top:18px;">Meta for Business Official Pages</h3>
+        <ul style="font-size:0.82rem; line-height:2; padding-left:20px;">
+            <li><a href="https://business.meta.com" target="_blank">Meta for Business — Marketing Tools & Advertising Solutions</a></li>
+            <li><a href="https://www.facebook.com/business/help/621956575422138" target="_blank">Meta Business Help Center — Advertising Levels in Meta Ads Manager (Campaign/Ad Set/Ad)</a></li>
+            <li><a href="https://www.facebook.com/business/help/714656935225188" target="_blank">Meta Business Help Center — About Campaign Structure</a></li>
+            <li><a href="https://www.facebook.com/business/help" target="_blank">Meta Business Help Center — Full Support & Troubleshooting</a></li>
+            <li><a href="https://www.facebook.com/business/goals/drive-website-traffic" target="_blank">Meta for Business — Drive Website Traffic (Traffic Objective)</a></li>
+        </ul>
+
+        <h3 style="font-size:0.95rem; color:#1877F2; margin-top:18px;">Advantage+ Documentation</h3>
+        <ul style="font-size:0.82rem; line-height:2; padding-left:20px;">
+            <li><a href="https://www.facebook.com/business/help/1292656978738967" target="_blank">Meta Business Help Center — About the Advantage+ Campaign Experience</a></li>
+            <li><a href="https://www.facebook.com/business/ads/advantage-plus-shopping-campaigns" target="_blank">Meta — Advantage+ Shopping Campaigns (ASC)</a></li>
+            <li><a href="https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine" target="_blank">Meta Engineering — Andromeda: Supercharging Advantage+ Automation</a></li>
+        </ul>
+
+        <h3 style="font-size:0.95rem; color:#1877F2; margin-top:18px;">Meta Foresight Insights</h3>
+        <ul style="font-size:0.82rem; line-height:2; padding-left:20px;">
+            <li><a href="https://www.facebook.com/business/insights/i2g" target="_blank">Meta Foresight — Insights to Go (Industry Data & Consumer Research)</a></li>
+            <li><a href="https://www.facebook.com/iq/insights-to-go" target="_blank">Meta Foresight — Insights to Go (Alternate Entry)</a></li>
+            <li><a href="https://www.linkedin.com/showcase/meta-foresight" target="_blank">Meta Foresight — LinkedIn Showcase Page</a></li>
+        </ul>
+
+        <h3 style="font-size:0.95rem; color:#1877F2; margin-top:18px;">TikTok Official Documentation (Gap Calibration Sources)</h3>
+        <ul style="font-size:0.82rem; line-height:2; padding-left:20px;">
+            <li><a href="https://ads.tiktok.com/help/article/landing-page-view?lang=en" target="_blank">TikTok Ads Manager — Landing Page View (LPV) Optimization Goal</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/how-to-set-up-engaged-session" target="_blank">TikTok Ads Manager — How to Set Up Engaged Session</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/traffic-objective?lang=en" target="_blank">TikTok Ads Manager — About the Traffic Objective</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/about-smart-plus-traffic-campaigns" target="_blank">TikTok Ads Manager — Smart+ Traffic Campaigns</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/about-smart-plus-campaign" target="_blank">TikTok Ads Manager — About Smart+ Campaigns</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/value-based-optimization-web" target="_blank">TikTok Ads Manager — Value-Based Optimization (VBO) for Web</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/events-api" target="_blank">TikTok Ads Manager — About Events API (CAPI)</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/about-catalog-ads-in-tiktok-ads-manager?lang=en" target="_blank">TikTok Ads Manager — About Catalog Ads</a></li>
+            <li><a href="https://ads.tiktok.com/help/article/how-to-create-smart-catalog-ads-for-app-retargeting?lang=en" target="_blank">TikTok Ads Manager — Smart+ Catalog Ads for Retargeting</a></li>
+        </ul>
+
+        <h3 style="font-size:0.95rem; color:#1877F2; margin-top:18px;">Verified Third-Party Case Studies & Industry References</h3>
+        <ul style="font-size:0.82rem; line-height:2; padding-left:20px;">
+            <li><a href="https://about.fb.com/news/2026/01/2026-ai-drives-performance" target="_blank">Meta Newsroom — 2026: AI Drives Performance (Q4 Performance Data)</a></li>
+            <li><a href="https://ads.tiktok.com/business/en-US/blog/smart-plus-ai-performance-solution" target="_blank">TikTok for Business Blog — Smart+ AI-Powered Performance Solution</a></li>
+            <li><a href="https://ads.tiktok.com/business/en/blog/tiktok-product-preview" target="_blank">TikTok Product Preview — What's New for Brands in Q2 2026</a></li>
+        </ul>
+
+        <p style="font-size:0.75rem; color:#999; margin-top:20px; border-top:1px solid #e4e6eb; padding-top:12px;">All data sourced from Meta for Business official pages, Advantage+ documentation, Meta Foresight insights, TikTok Business Help Center, and verified third-party case studies. Last verified: May 2026.</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p><strong>Meta Vertical Playbook Research</strong> | Competitive Intelligence for TikTok Web Traffic Product</p>
+    <p style="margin-top:8px;">Sources: Meta for Business Official Industry Pages, Meta Advantage+ Documentation, Meta Foresight, Verified Third-Party Case Studies</p>
+    <p style="margin-top:8px; opacity:0.6;">Internal Use Only — PSO Competitive Research | Last Updated: May 2026</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Industry Tab Switching
+    var tabs = document.querySelectorAll('.tab-btn');
+    var contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var targetId = 'tab-' + this.getAttribute('data-tab');
+
+            // Remove active from all tabs
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            // Remove active from all contents
+            contents.forEach(function(c) { c.classList.remove('active'); });
+
+            // Add active to clicked tab
+            this.classList.add('active');
+            // Show corresponding content
+            var targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+
+            // Scroll to top of container
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Flow Tab Switching (Campaign / Ad Set / Ad within each Ads Manager mockup)
+    document.querySelectorAll('.flow-tab-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var flow = this.closest('.ads-manager-flow');
+            var targetPanel = this.getAttribute('data-flowtab');
+
+            // Deactivate all tabs and panels within this flow
+            flow.querySelectorAll('.flow-tab-btn').forEach(function(t) {
+                t.classList.remove('flow-tab-active');
+            });
+            flow.querySelectorAll('.flow-tab-panel').forEach(function(p) {
+                p.classList.remove('flow-panel-active');
+            });
+
+            // Mark previous tabs as complete
+            var flowTabs = flow.querySelectorAll('.flow-tab-btn');
+            var clickedIndex = Array.from(flowTabs).indexOf(this);
+            flowTabs.forEach(function(t, idx) {
+                if (idx < clickedIndex) {
+                    t.classList.add('flow-tab-complete');
+                } else {
+                    t.classList.remove('flow-tab-complete');
+                }
+            });
+
+            // Activate clicked tab and corresponding panel
+            this.classList.add('flow-tab-active');
+            var panel = flow.querySelector('[data-flowpanel="' + targetPanel + '"]');
+            if (panel) {
+                panel.classList.add('flow-panel-active');
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
