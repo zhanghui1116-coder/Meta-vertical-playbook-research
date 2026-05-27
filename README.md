@@ -1,27 +1,14 @@
-# Meta Vertical Advertising Playbook — Competitive Research
+# Meta Vertical Playbook — Competitive Intelligence for Web Traffic
 
-Competitive intelligence research page covering Meta's vertical advertising playbooks across 7 industries, benchmarked against TikTok Web Traffic product capabilities.
+Self-contained HTML competitive research page covering Meta's vertical advertising playbooks across 7 industries.
 
-## Industries Covered
-- Automotive
-- Travel
-- E-commerce
-- Retail
-- CPG
-- Entertainment & Media
-- Professional Services
+## Pages
 
-## Deployment (GitHub Pages)
+- `index.html` — Full research page with interactive tabs, flow mockups, ad formats, gap analysis (Summary tab now contains the one-pager matrix)
+- `onepager.html` — Standalone one-pager for independent sharing/printing
 
-1. Create a new GitHub repository
-2. Upload all files from this zip to the repository root
-3. Go to **Settings → Pages → Source** → select `main` branch, `/ (root)` folder
-4. Click Save — your site will be live at `https://<username>.github.io/<repo-name>/`
+## Deploy to GitHub Pages
 
-## Local Preview
-
-Simply open `index.html` in any modern browser.
-
----
-
-*Internal Use Only — PSO Competitive Research | Last Updated: May 2026*
+1. Push this folder's contents to a GitHub repo's `main` branch
+2. Enable GitHub Pages in Settings → Pages → Source: Deploy from branch (main, / root)
+3. Site will be live at `https://<username>.github.io/<repo-name>/`
